@@ -7,11 +7,11 @@ package my_project;
 public class Config {
 
     // Titel des Programms (steht oben in der Fenstertitelzeile)
-    public final static String WINDOW_TITLE = "Unbenanntes KAGO-4.0b-Projekt";
+    public final static String WINDOW_TITLE = "Kriegsverwaltung";
 
     // Breite des Programmfensters (Width) und Höhe des Programmfensters (Height)
-    public final static int WINDOW_WIDTH = 600;
-    public final static int WINDOW_HEIGHT = 600+29;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
+    public final static int WINDOW_WIDTH = 1000;
+    public final static int WINDOW_HEIGHT = 700+29;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
 
     // Weitere Optionen für das Projekt
     public final static boolean useSound = true;

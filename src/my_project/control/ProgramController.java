@@ -15,6 +15,7 @@ public class ProgramController {
 
 
     // Referenzen
+    private Verwaltungsstart verwaltungsstart;
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
 
     /**
@@ -32,7 +33,7 @@ public class ProgramController {
      * Diese Methode wird genau ein mal nach Programmstart aufgerufen. Achtung: funktioniert nicht im Szenario-Modus
      */
     public void startProgram() {
-
+        verwaltungsstart = new Verwaltungsstart(viewController);
     }
 
     /**
