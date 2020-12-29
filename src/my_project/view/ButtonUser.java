@@ -1,7 +1,10 @@
 package my_project.view;
 
+import KAGO_framework.control.ViewController;
+
 public interface ButtonUser {
 
-    public abstract void buttoneffect();
+    void buttoneffect(int buttonNummer);
+    void registriereButtons(ViewController vC);
 
 }

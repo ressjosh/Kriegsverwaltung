@@ -1,5 +1,6 @@
 package my_project.view;
 
+import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
@@ -13,7 +14,7 @@ public class Verwaltungsoptionen extends InteractiveGraphicalObject implements B
     }
 
     @Override
-    public void buttoneffect() {
+    public void buttoneffect(int buttonNummer) {
 
     }
 
@@ -59,6 +60,11 @@ public class Verwaltungsoptionen extends InteractiveGraphicalObject implements B
 
     @Override
     public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void registriereButtons(ViewController vC) {
 
     }
 }

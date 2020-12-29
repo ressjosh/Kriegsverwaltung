@@ -21,7 +21,7 @@ public class ViewControll {
         this.ekM = ekM;
         vC.createScene();
         vC.createScene();
-        startfenster = new startfenster();
+        startfenster = new startfenster(vC);
         europakarte = new europakarte();
         verwaltungsoptionen = new Verwaltungsoptionen();
         standortmarken = new List<>();

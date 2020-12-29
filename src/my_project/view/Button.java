@@ -17,8 +17,9 @@ public class Button extends InteractiveGraphicalObject {
     private String text;
     private int buttonNummer;
     private ButtonUser myUser;
+    private int[] farbe;
 
-    public Button(String text, int groesse, double x, double y, String farbe, int buttonNr, ButtonUser user){
+    public Button(String text, int groesse, double x, double y, int r, int g, int b, int buttonNr, ButtonUser user){
         myUser = user;
         buttonNummer = buttonNr;
         this.x = x;
@@ -26,10 +27,21 @@ public class Button extends InteractiveGraphicalObject {
         this.text = text;
         this.hoehe = groesse;
         this.breite = text.length()*(groesse-2)*3/5+15;
+        farbe = new int[3];
+        farbe[0] = r;
+        farbe[1] = g;
+        farbe[2] = b;
     }
 
     public Button(double x, double y, BufferedImage buttonBild, int buttonNr, ButtonUser user){
-
+        text = "";
+        myUser = user;
+        buttonNummer = buttonNr;
+        this.x = x;
+        this.y = y;
+        myImage = buttonBild;
+        this.hoehe = myImage.getHeight();
+        this.breite = myImage.getWidth();
     }
 
 
@@ -48,9 +60,25 @@ public class Button extends InteractiveGraphicalObject {
 
     }
 
+    public void draw(DrawTool drawTool){
+        if(text.equals("")){
+            drawTool.drawImage(myImage, x, y);
+        }else {
+            drawTool.setCurrentColor(100,100,100, 255);
+            drawTool.formatText("Courier New", 0, (int) hoehe - 2);
+            drawTool.drawFilledRectangle(x, y, breite, hoehe);
+            drawTool.setCurrentColor(farbe[0], farbe[1], farbe[2], 255);
+            drawTool.drawText(x + 7.5, y + (hoehe - 2) - 8, text);
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        double mouseX = e.getX();
+        double mouseY = e.getY();
+        if(mouseX > x && mouseX < x+breite && mouseY > y && mouseY < y+hoehe){
+            myUser.buttoneffect(buttonNummer);
+        }
     }
 
     @Override
