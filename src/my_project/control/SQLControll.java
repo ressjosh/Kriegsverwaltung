@@ -93,8 +93,10 @@ public class SQLControll {
 
 
     public void programmstart() {
-        loescheTabellen();
-        //erstelleTabellen();
+        if(dbController.connect()) {
+            loescheTabellen();
+            erstelleTabellen();
+        }
     }
 
     private void loescheTabellen() {
@@ -107,6 +109,10 @@ public class SQLControll {
             }
             processSQL(tmpsql);
         }
+
+    }
+
+    private void erstelleTabellen(){
 
     }
 

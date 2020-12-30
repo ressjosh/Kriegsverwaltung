@@ -34,7 +34,7 @@ public class ViewControll {
         vC.draw(verwaltungsoptionen, 1);
     }
 
-    private void newStandort(){
+    public void newStandort(){
         standortmarke tmp = new standortmarke();
         ekM.standortHinzufuegen(tmp);
         vC.draw(tmp, 1);
