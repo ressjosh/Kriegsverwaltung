@@ -2,6 +2,7 @@ package my_project.control;
 
 import KAGO_framework.control.DatabaseController;
 import KAGO_framework.model.abitur.datenbanken.mysql.QueryResult;
+import my_project.view.Ausgabenformatierung;
 
 public class SQLControll {
 
@@ -9,6 +10,30 @@ public class SQLControll {
 
     public SQLControll(){
         dbController = new DatabaseController();
+        String[][] s = new String[2][2];
+        s[0][0] = "Nummer eins";
+        s[0][1] = "Nummer zwei";
+        s[1][0] = "Nummer drei";
+        s[1][1] = "Nummer vier";
+        new Ausgabenformatierung(s);
+        programmstart();
+    }
+
+    public void processSQLMitRueckgabe(String sql){
+        String ergebnis = processSQL(sql);
+        if(ergebnis.equals("Success")){
+            String [][] ausgabe = dbController.getCurrentQueryResult().getData();
+            String[][] tmp = new String[ausgabe.length+1][];
+            tmp[0] = dbController.getCurrentQueryResult().getColumnNames();
+            for(int i = 1; i<tmp.length; i++){
+                tmp[i] = ausgabe[i-1];
+            }
+            new Ausgabenformatierung(tmp);
+        }else{
+            String[][] tmp = new String[1][1];
+            tmp[0][0] = ergebnis;
+            new Ausgabenformatierung(tmp);
+        }
     }
 
     /**
@@ -74,8 +99,8 @@ public class SQLControll {
 
     private void loescheTabellen() {
         processSQL("SHOW TABLES LIKE 'JR_Kv_%'");
-        String[][] tmpAll= dbController.getCurrentQueryResult().getData();
-        if(tmpAll.length > 0) {
+        if(dbController.getCurrentQueryResult() != null){
+            String[][] tmpAll= dbController.getCurrentQueryResult().getData();
             String tmpsql = "DROP TABLE " + tmpAll[0];
             for (int i = 1; i < tmpAll.length; i++) {
                 tmpsql += ", " + tmpAll[i][0];

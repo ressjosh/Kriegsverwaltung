@@ -7,9 +7,12 @@ import KAGO_framework.view.DrawTool;
 
 import java.awt.event.MouseEvent;
 
-public class Verwaltungsoptionen extends InteractiveGraphicalObject implements ButtonUser {
+public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
+
+    private Button ab, cb, cd, de, ef, fg;
 
     public Verwaltungsoptionen() {
+        //ab = new Button("", 950, 0,  )
 
     }
 
@@ -26,41 +29,6 @@ public class Verwaltungsoptionen extends InteractiveGraphicalObject implements B
     @Override
     public void update(double dt) {
         super.update(dt);
-    }
-
-    @Override
-    public void keyPressed(int key) {
-
-    }
-
-    @Override
-    public void keyReleased(int key) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
     }
 
     @Override

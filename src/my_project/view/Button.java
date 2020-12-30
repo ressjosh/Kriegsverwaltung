@@ -19,7 +19,22 @@ public class Button extends InteractiveGraphicalObject {
     private ButtonUser myUser;
     private int[] farbe;
 
-    public Button(String text, int groesse, double x, double y, int r, int g, int b, int buttonNr, ButtonUser user){
+
+    public Button(String text,double x, double y, int hoehe, int breite,  int r, int g, int b, int buttonNr, ButtonUser user){
+        myUser = user;
+        buttonNummer = buttonNr;
+        this.x = x;
+        this.y = y;
+        this.text = text;
+        this.hoehe = hoehe;
+        this.breite = breite;
+        farbe = new int[3];
+        farbe[0] = r;
+        farbe[1] = g;
+        farbe[2] = b;
+    }
+
+    public Button(String text, double x, double y, int groesse, int r, int g, int b, int buttonNr, ButtonUser user){
         myUser = user;
         buttonNummer = buttonNr;
         this.x = x;
