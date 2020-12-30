@@ -3,6 +3,7 @@ package my_project.view;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.control.ViewControll;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,17 +16,18 @@ public class startfenster extends GraphicalObject implements ButtonUser{
     private Button selectMusic;
     private ViewController viewController;
     private Hintergrundbild hintergrund;
+    private ViewControll vC;
 
-    public startfenster(ViewController vC){
-        viewController = vC;
+    public startfenster(ViewController vCer, ViewControll vC){
+        viewController = vCer;
+        this.vC = vC;
         setNewImage("daten/startbild.jpg");
         hintergrund = new Hintergrundbild(getMyImage());
         setNewImage("daten/startbutton02.png");
         startButton = new Button(100, 100, getMyImage(), 0, this);
         setNewImage("daten/chooseMusic.png");
         selectMusic = new Button(600,100, getMyImage(), 1, this);
-        registriereButtons(vC);
-
+        registriereButtons(viewController);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class startfenster extends GraphicalObject implements ButtonUser{
                     System.out.println("Du hast keine Musik gewählt");
                 }else if(eingabe == 1){
                     System.out.println("Du hast Musik 01 gewählt");
+                    vC.starteMusik(eingabe);
                 }else if(eingabe == 2){
                     System.out.println("Du hast Musik 02 gewählt");
                 }

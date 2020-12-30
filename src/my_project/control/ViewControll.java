@@ -21,7 +21,7 @@ public class ViewControll {
         this.ekM = ekM;
         vC.createScene();
         vC.createScene();
-        startfenster = new startfenster(vC);
+        startfenster = new startfenster(vC,this);
         europakarte = new europakarte();
         verwaltungsoptionen = new Verwaltungsoptionen();
         standortmarken = new List<>();
@@ -38,6 +38,16 @@ public class ViewControll {
         standortmarke tmp = new standortmarke();
         ekM.standortHinzufuegen(tmp);
         vC.draw(tmp, 1);
+    }
+
+    public void starteMusik(int welche){
+        if(welche == 1){
+            vC.getSoundController().playSound("music01");
+            vC.getSoundController().setVolume("music01", 1);
+        }else{
+
+        }
+
     }
 
 }
