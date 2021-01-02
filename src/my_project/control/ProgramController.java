@@ -35,6 +35,8 @@ public class ProgramController {
     public void startProgram() {
         verwaltungsstart = new Verwaltungsstart(viewController);
         viewController.getSoundController().loadSound("daten/Sounds/Hans Zimmer - Time (Inception).mp3", "music01", true);
+        viewController.getSoundController().loadSound("daten/Sounds/Best Dramatic music ever!!.mp3", "music02", true);
+
     }
 
     /**

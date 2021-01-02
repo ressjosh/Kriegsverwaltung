@@ -10,13 +10,14 @@ public class SQLControll {
 
     public SQLControll(){
         dbController = new DatabaseController();
-        String[][] s = new String[2][2];
-        s[0][0] = "Nummer eins";
-        s[0][1] = "Nummer zwei";
-        s[1][0] = "Nummer drei";
-        s[1][1] = "Nummer vier";
-        new Ausgabenformatierung(s);
         programmstart();
+    }
+
+    public void programmstart() {
+        if(dbController.connect()) {
+            loescheTabellen();
+            erstelleTabellen();
+        }
     }
 
     public void processSQLMitRueckgabe(String sql){
@@ -91,108 +92,155 @@ public class SQLControll {
         return formattedString;
     }
 
-
-    public void programmstart() {
-        if(dbController.connect()) {
-            loescheTabellen();
-            erstelleTabellen();
-        }
-    }
-
     private void loescheTabellen() {
-        processSQL("SHOW TABLES LIKE 'JR_Kv_%'");
-        if(dbController.getCurrentQueryResult() != null){
+        System.out.println("Löschen " + processSQL("SHOW TABLES LIKE 'JR_Kv_%'"));
+        if(dbController.getCurrentQueryResult() != null && dbController.getCurrentQueryResult().getData().length>0){
             String[][] tmpAll= dbController.getCurrentQueryResult().getData();
-            String tmpsql = "DROP TABLE " + tmpAll[0];
+            String tmpsql = "DROP TABLE " + tmpAll[0][0];
             for (int i = 1; i < tmpAll.length; i++) {
                 tmpsql += ", " + tmpAll[i][0];
             }
+            System.out.println("Löschenbefehl  " + tmpsql);
+            processSQL("SET FOREIGN_KEY_CHECKS=0");
             processSQL(tmpsql);
-        }
+            processSQL("SET FOREIGN_KEY_CHECKS=1");
 
+        }
+        System.out.println("Alte Tabellen und Datensätze vollständig entfernt");
     }
 
     private void erstelleTabellen(){
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Standorte(" +
+                "ID INTEGER NOT NULL," +
+                "Koordinate01 INTEGER," +
+                "Koordinate02 INTEGER," +
+                "Gesamtkampfkraft INTEGER," +
+                "PRIMARY KEY(ID))" +
+                ";"));
 
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Fahrzeuge(" +
+                "ID INTEGER NOT NULL," +
+                "Typ VARCHAR(20)," +
+                "Baujahr INTEGER," +
+                "Fahrzeugführer INTEGER," +
+                "Stationsort INTEGER," +
+                "zerstört BOOLEAN," +
+                "Besatzung VARCHAR(10)," +
+                "PRIMARY KEY(ID))" +
+                ";"));
+
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Fahrzeugtypen(" +
+                "Typ VARCHAR(10) NOT NULL," +
+                "Fahrzeugart VARCHAR(20)," +
+                "PS INTEGER," +
+                "Besatzungszahl Integer," +
+                "Kampfkraft INTEGER," +
+                "PRIMARY KEY(Typ))" +
+                ";"));
+
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Personen(" +
+                "Erkennungsnummer INTEGER NOT NULL," +
+                "Vorname VARCHAR(30)," +
+                "Nachname VARCHAR(30)," +
+                "Age INTEGER," +
+                "Geschlecht VARCHAR(10)," +
+                "Geburtstag VARCHAR(10)," +
+                "Einheit INTEGER," +
+                "ImDienst BOOLEAN," +
+                "Tot BOOLEAN," +
+                "Straße VARCHAR(40)," +
+                "Hausnummer INTEGER," +
+                "PLZ INTEGER," +
+                "Stadt VARCHAR(20)," +
+                "Land VARCHAR(30)," +
+                "PRIMARY KEY(Erkennungsnummer))" +
+                ";"));
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Einheit(" +
+                "ID INTEGER NOT NULL," +
+                "Truppstärke INTEGER," +
+                "Oberbefehlshaber INTEGER," +
+                "Erfahrungswert INTEGER," +
+                "Kampfkraft INTEGER," +
+                "ImEinsatz BOOLEAN," +
+                "PRIMARY KEY(ID))" +
+                ";"));
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Besatzung(" +
+                "Spitzname VARCHAR(20) NOT NULL," +
+                "Fahrzeug INTEGER," +
+                "Erfahrung INTEGER," +
+                "PRIMARY KEY(Spitzname))" +
+                ";"));
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Feinde(" +
+                "ID INTEGER NOT NULL," +
+                "Name VARCHAR(20)," +
+                "Kampfkraft INTEGER," +
+                "PRIMARY KEY(ID))" +
+                ";"));
+
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_Kampfhandlung(" +
+                "Codename VARCHAR(10) NOT NULL," +
+                "Standort INTEGER," +
+                "Beschreibung VARCHAR(100)," +
+                "Opferzahl INTEGER," +
+                "PRIMARY KEY(Codename))" +
+                ";"));
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_KämpfendeTruppe(" +
+                "Codename VARCHAR(10) NOT NULL," +
+                "Einheit INTEGER," +
+                "PRIMARY KEY(Codename, Einheit))" +
+                ";"));
+
+        System.out.println(processSQL("CREATE TABLE JR_Kv_AngreifendeTruppe(" +
+                "Codename VARCHAR(10) NOT NULL," +
+                "Feind INTEGER," +
+                "PRIMARY KEY(Codename, Feind))" +
+                ";"));
+
+        /*Die Fremdschlüssel definieren
+         */
+        System.out.println("Ab hier werden die Fremdschlüssel gesetzt");
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_AngreifendeTruppe " +
+                "ADD CONSTRAINT FOREIGN KEY (Codename) REFERENCES JR_Kv_Kampfhandlung (Codename), " +
+                "ADD CONSTRAINT FOREIGN KEY (Feind) REFERENCES JR_Kv_Feinde (ID) " +
+                ";"));
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_KämpfendeTruppe " +
+                "ADD CONSTRAINT FOREIGN KEY (Codename) REFERENCES JR_Kv_Kampfhandlung (Codename), " +
+                "ADD CONSTRAINT FOREIGN KEY (Einheit) REFERENCES JR_Kv_Einheit (ID) " +
+                ";"));
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_Besatzung " +
+                "ADD CONSTRAINT FOREIGN KEY (Fahrzeug) REFERENCES JR_Kv_Fahrzeuge (ID) " +
+                ";"));
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_Einheit " +
+                "ADD CONSTRAINT eK FOREIGN KEY (Oberbefehlshaber) REFERENCES JR_Kv_Personen (Erkennungsnummer) " +
+                ";"));
+
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_Kampfhandlung " +
+                "ADD CONSTRAINT FOREIGN KEY (Standort) REFERENCES JR_Kv_Standorte (ID) " +
+                ";"));
+
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_Personen " +
+                "ADD CONSTRAINT pK FOREIGN KEY (Einheit) REFERENCES JR_Kv_Einheit (ID) " +
+                ";"));
+
+        System.out.println(processSQL("ALTER TABLE JR_Kv_Fahrzeuge " +
+                "ADD CONSTRAINT FOREIGN KEY (Typ) REFERENCES JR_Kv_Fahrzeugtypen (Typ), " +
+                "ADD CONSTRAINT FOREIGN KEY (Fahrzeugführer) REFERENCES JR_Kv_Personen (Erkennungsnummer), " +
+                "ADD CONSTRAINT FOREIGN KEY (Stationsort) REFERENCES JR_Kv_Standorte (ID), " +
+                "ADD CONSTRAINT FOREIGN KEY (Besatzung) REFERENCES JR_Kv_Besatzung (Spitzname) " +
+                ";"));
     }
-
-
-        /*private void erstelleTabellen(){
-            //neue Tabellen anlegen
-            sql="CREATE TABLE MG_Fabrik(\n" +
-                    "ID INTEGER NOT NULL,\n" +
-                    "Name VARCHAR (40) NOT NULL,\n" +
-                    "AktProduktion INTEGER,\n" +
-                    "MaxProduktion INTEGER,\n" +
-                    "KostenProStk INTEGER,\n" +
-                    "Stadt VARCHAR (30),\n" +
-                    "PRIMARY KEY (ID) )\n";
-            ausführen(sql,"MG_Fabrik wurde neu erstellt");
-            sql="CREATE TABLE MG_Stadt(\n" +
-                    "Name VARCHAR (30) NOT NULL,\n" +
-                    "Bevölkerung INTEGER,\n" +
-                    "Lagerkapazität INTEGER,\n" +
-                    "Angebot INTEGER,\n" +
-                    "Nachfrage INTEGER,\n" +
-                    "PRIMARY KEY (Name))\n";
-            ausführen(sql,"MG_Stadt wurde neu erstellt");
-            sql="CREATE TABLE MG_Straße(\n" +
-                    "ID INTEGER NOT NULL,\n" +
-                    "Kosten INTEGER,\n" +
-                    "Dauer INTEGER,\n" +
-                    "Art VARCHAR (8),\n" +
-                    "Start VARCHAR(30),\n" +
-                    "Ziel VARCHAR(30),\n" +
-                    "PRIMARY KEY (ID))\n";
-            ausführen(sql,"MG_Straße wurde neu erstellt");
-            sql= "CREATE TABLE MG_Route(\n" +
-                    "ID INTEGER NOT NULL,\n" +
-                    "Stop INTEGER," +
-                    "Straße INTEGER,\n" +
-                    "Fabrik INTEGER,\n" +
-                    "PRIMARY KEY (ID))";
-            ausführen(sql,"MG_Route wurde neu erstellt");
-            //Fremdschlüssel ergänzen
-            sql="ALTER TABLE MG_Fabrik\n" +
-                    "ADD CONSTRAINT fkf FOREIGN KEY(Stadt) REFERENCES MG_Stadt(Name)";
-            ausführen(sql,"1:n Beziehug zwischen Fabrik und Stadt erzeugt");
-            sql="ALTER TABLE MG_Straße\n" +
-                    "ADD CONSTRAINT fkst FOREIGN KEY (Start) REFERENCES MG_Stadt(Name)";
-            ausführen(sql,"1:n Beziehung zwischen Straße und Stadt erzeugt");
-            sql="ALTER TABLE MG_Straße\n" +
-                    "ADD CONSTRAINT fkst2 FOREIGN KEY (Ziel) REFERENCES MG_Stadt(Name)";
-            ausführen(sql,"2:n Beziehung zwischen Straße und Stadt erzeugt");
-            sql="ALTER TABLE MG_Route\n" +
-                    "ADD CONSTRAINT fkr FOREIGN KEY (Straße) REFERENCES MG_Straße(ID)";
-            ausführen(sql,"1:n Beziehung zwischen Straße und Route erzeugt");
-            sql="ALTER TABLE MG_Route\n" +
-                    "ADD CONSTRAINT fkr2 FOREIGN KEY (Fabrik) REFERENCES MG_Fabrik(ID)";
-            ausführen(sql,"1:n Beziehung zwischen Fabrik und Route erzeugt");
-            //Tabelle füllen:
-
-            ausführen(sql,"London unter Städte hinzugefügt");
-            String[] städte=new String[]{"Joshuandria","Lisa de Janeiro","Maxinopel","Renehausen","Knebopolis","AmbroCity","St. Iboburg","San Marcisco"};
-            for(String stadt:städte){
-                sql="INSERT INTO MG_Stadt (Name,Bevölkerung,Lagerkapazität,Angebot,Nachfrage)\n" +
-                        "VALUES ('"+stadt+"',"+(int)(100000+Math.random()*(9900000))+","+(int)(100000+Math.random()*(9900000))+",0,0)";
-                ausführen(sql,stadt+" wurde als Stadt hinzugefügt");
-            }
-            for(int i=0;i<16;i++){
-                double r=Math.random();
-                String art="";
-                if(r>0.66){
-                    art="LKW";
-                }else if(r>0.33){
-                    art="Flugzeug";
-                }else{
-                    art="Schiff";
-                }
-                int z=gibZahlAußer(i%8,7);
-                sql="INSERT INTO MG_Straße (ID,Kosten,Dauer,Art,Start,Ziel)\n" +
-                        "VALUES("+i+","+(int)(1000+Math.random()*99000)+","+(int)(1+Math.random()*9)+",'"+art+"','"
-                        +städte[z]+"','"+städte[i%8]+"');";
-                ausführen(sql,"Eine Straße von "+städte[z]+" bis "+städte[i%8]+" wurde erstellt");
-            }
-
-        }*/
 }

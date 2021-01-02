@@ -18,9 +18,12 @@ public class Button extends InteractiveGraphicalObject {
     private int buttonNummer;
     private ButtonUser myUser;
     private int[] farbe;
+    private int schriftgroesse;
+    private int schriftX;
+    private int schriftY;
 
 
-    public Button(String text,double x, double y, int hoehe, int breite,  int r, int g, int b, int buttonNr, ButtonUser user){
+    public Button(String text,double x, double y, int hoehe, int breite, int schriftgroesse, int schriftX, int schriftY,  int r, int g, int b, int buttonNr, ButtonUser user){
         myUser = user;
         buttonNummer = buttonNr;
         this.x = x;
@@ -32,6 +35,9 @@ public class Button extends InteractiveGraphicalObject {
         farbe[0] = r;
         farbe[1] = g;
         farbe[2] = b;
+        this.schriftgroesse = schriftgroesse;
+        this.schriftX = schriftX;
+        this.schriftY = schriftY;
     }
 
     public Button(String text, double x, double y, int groesse, int r, int g, int b, int buttonNr, ButtonUser user){
@@ -78,7 +84,13 @@ public class Button extends InteractiveGraphicalObject {
     public void draw(DrawTool drawTool){
         if(text.equals("")){
             drawTool.drawImage(myImage, x, y);
-        }else {
+        }else if(schriftgroesse != 0) {
+            drawTool.setCurrentColor(100,100,100, 255);
+            drawTool.formatText("Courier New", 0, schriftgroesse);
+            drawTool.drawFilledRectangle(x, y, breite, hoehe);
+            drawTool.setCurrentColor(farbe[0], farbe[1], farbe[2], 255);
+            drawTool.drawText(schriftX, schriftY, text);
+        }else{
             drawTool.setCurrentColor(100,100,100, 255);
             drawTool.formatText("Courier New", 0, (int) hoehe - 2);
             drawTool.drawFilledRectangle(x, y, breite, hoehe);

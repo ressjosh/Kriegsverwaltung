@@ -24,7 +24,7 @@ public class startfenster extends GraphicalObject implements ButtonUser{
         setNewImage("daten/startbild.jpg");
         hintergrund = new Hintergrundbild(getMyImage());
         setNewImage("daten/startbutton02.png");
-        startButton = new Button(100, 100, getMyImage(), 0, this);
+        startButton = new Button(100, 150, getMyImage(), 0, this);
         setNewImage("daten/chooseMusic.png");
         selectMusic = new Button(600,100, getMyImage(), 1, this);
         registriereButtons(viewController);
@@ -59,11 +59,13 @@ public class startfenster extends GraphicalObject implements ButtonUser{
                         options,
                         options[0] );
                 if(eingabe == 0){
+                    vC.starteMusik(eingabe);
                     System.out.println("Du hast keine Musik gewählt");
                 }else if(eingabe == 1){
                     System.out.println("Du hast Musik 01 gewählt");
                     vC.starteMusik(eingabe);
                 }else if(eingabe == 2){
+                    vC.starteMusik(eingabe);
                     System.out.println("Du hast Musik 02 gewählt");
                 }
         }
