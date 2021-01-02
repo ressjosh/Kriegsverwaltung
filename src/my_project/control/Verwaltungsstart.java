@@ -21,6 +21,14 @@ public class Verwaltungsstart {
 
     }
 
+    public void erstelleNeuePerson(){
+
+    }
+
+    public void erstelleNeuesFahrzeug(){
+
+    }
+
     public void gibStandortDatenAus(int x, int y){
         //return sqlControll.processSQL("Hier steht bald der Befehl");
         //return "Hallo \n nochmal";
@@ -30,4 +38,28 @@ public class Verwaltungsstart {
     public EuropakartenModel getEkM(){
         return ekM;
     }
+
+    public void ausgabePersonenAlter(String alter){
+
+    }
+    public void ausgabePersonenNachname(String alter){
+
+    }
+    public void ausgabePersonenErkennungsnummer(String alter){
+
+    }
+    public void ausgabePersonenEinheit(String alter){
+
+    }
+
+    public void ausgabeFahrzeugeTyp(String typ){
+
+    }
+    public void ausgabeFahrzeugeBaujahr(String baujahr){
+
+    }
+    public void ausgabeFahrzeugeStationsort(String staionsort){
+
+    }
+
 }

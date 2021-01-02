@@ -4,6 +4,7 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.control.Verwaltungsstart;
 
 import java.awt.event.MouseEvent;
 
@@ -14,14 +15,16 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
     private Kampfverwaltung kV;
     private Einheitenverwaltung eV;
     private Fahrzeugverwaltung fV;
+    private Verwaltungsstart vS;
 
-    public Verwaltungsoptionen() {
+    public Verwaltungsoptionen(Verwaltungsstart vS) {
+        this.vS = vS;
         personen = new Button("Personen- ", 932, 0,50,250,25,960,24,255,0,0,0,this);
         fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,250,25,960,76,255,0,0,1,this);
         einheiten = new Button("Einheiten- ", 932, 104,50,250,25,960,128,255,0,0,2,this);
         kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,250,25,960,180,255,0,0,3,this);
-        pV = new Personenverwaltung();
-        fV = new Fahrzeugverwaltung();
+        pV = new Personenverwaltung(vS);
+        fV = new Fahrzeugverwaltung(vS);
         kV = new Kampfverwaltung();
         eV = new Einheitenverwaltung();
     }

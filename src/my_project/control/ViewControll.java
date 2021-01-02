@@ -24,7 +24,7 @@ public class ViewControll {
         vC.createScene();
         startfenster = new startfenster(vC,this);
         europakarte = new Europakarte(vC, this);
-        verwaltungsoptionen = new Verwaltungsoptionen();
+        verwaltungsoptionen = new Verwaltungsoptionen(vS);
         drawUndRegister();
     }
 
