@@ -12,19 +12,19 @@ public class ViewControll {
     private startfenster startfenster;
     private Europakarte europakarte;
     private Verwaltungsoptionen verwaltungsoptionen;
-    private List<standortmarke> standortmarken;
     private ViewController vC;
-    private EuropakartenModel ekM;
+    private Verwaltungsstart vS;
+    private  SQLControll sC;
 
-    public ViewControll(ViewController vC, EuropakartenModel ekM){
+    public ViewControll(ViewController vC,Verwaltungsstart vS, SQLControll sC){
+        this.sC = sC;
+        this.vS = vS;
         this.vC = vC;
-        this.ekM = ekM;
         vC.createScene();
         vC.createScene();
         startfenster = new startfenster(vC,this);
         europakarte = new Europakarte(vC, this);
         verwaltungsoptionen = new Verwaltungsoptionen();
-        standortmarken = new List<>();
         drawUndRegister();
     }
 
@@ -32,12 +32,15 @@ public class ViewControll {
         vC.draw(startfenster, 0);
         vC.draw(europakarte, 1);
         vC.draw(verwaltungsoptionen, 1);
+        verwaltungsoptionen.registriereButtons(vC);
     }
 
-    public void newStandort(){
-        standortmarke tmp = new standortmarke();
-        ekM.standortHinzufuegen(tmp);
+    public void newStandort(String name, int y, int x, int iD, int kampfkraft){
+        vS.erstelleNeuenStandort();
+        standortmarke tmp = new standortmarke(y, x, this);
+        vS.getEkM().standortHinzufuegen(tmp);
         vC.draw(tmp, 1);
+        vC.register(tmp, 1);
     }
 
     public void starteMusik(int welche){
@@ -54,4 +57,7 @@ public class ViewControll {
 
     }
 
+    public Verwaltungsstart getvS() {
+        return vS;
+    }
 }

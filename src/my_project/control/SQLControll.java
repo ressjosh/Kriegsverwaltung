@@ -63,7 +63,7 @@ public class SQLControll {
      * @param statement Die auszuführende SQL-Anweisung
      * @return Verschiedene Ausgaben je nach Fall: 1) SQL-Abfrage: Tabellenähnlich formatiertes Ergebnis 2) SQL-Anweisung ohne Rückgabe: "Success" 3) Fehler etc.: Nähere Infos zum Fehler
      */
-    private String processSQL(String statement) {
+    public String processSQL(String statement) {
         if(dbController.isConnected()) {
             dbController.executeStatement(statement);
             QueryResult queryResult = dbController.getCurrentQueryResult();

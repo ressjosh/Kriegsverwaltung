@@ -11,8 +11,23 @@ public class Verwaltungsstart {
 
     public Verwaltungsstart(ViewController viewController){
         this.viewController = viewController;
-        ekM = new EuropakartenModel();
-        vC = new ViewControll(viewController, ekM);
         sqlControll = new SQLControll();
+        vC = new ViewControll(viewController, this, sqlControll);
+        ekM = new EuropakartenModel(vC);
+    }
+
+    //SQL-Umwandlung
+    public void erstelleNeuenStandort(){
+
+    }
+
+    public void gibStandortDatenAus(int x, int y){
+        //return sqlControll.processSQL("Hier steht bald der Befehl");
+        //return "Hallo \n nochmal";
+        sqlControll.processSQLMitRueckgabe("SQL um Standort mit bestimmten Koordinaten zurückzugeben");
+    }
+
+    public EuropakartenModel getEkM(){
+        return ekM;
     }
 }
