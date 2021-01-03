@@ -25,14 +25,14 @@ public class Fahrzeugverwaltung {
         sucheNachFahrzeugenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ErstelleNeuesFahrzeug(vS);
+                new Fahrzeugsuche(vS);
                 frame.dispose();
             }
         });
         erstelleEinNeuesFahrzeugButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Fahrzeugsuche(vS);
+                new ErstelleNeuesFahrzeug(vS);
                 frame.dispose();
             }
         });

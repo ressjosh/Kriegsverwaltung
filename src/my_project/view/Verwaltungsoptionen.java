@@ -10,11 +10,12 @@ import java.awt.event.MouseEvent;
 
 public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
 
-    private Button personen, fahrzeuge, einheiten, kampfhandlungen;
+    private Button personen, fahrzeuge, einheiten, kampfhandlungen, gesamtUebersicht;
     private Personenverwaltung pV;
     private Kampfverwaltung kV;
     private Einheitenverwaltung eV;
     private Fahrzeugverwaltung fV;
+    private Gesamtverwaltung gV;
     private Verwaltungsstart vS;
 
     public Verwaltungsoptionen(Verwaltungsstart vS) {
@@ -23,10 +24,12 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
         fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,250,25,960,76,255,0,0,1,this);
         einheiten = new Button("Einheiten- ", 932, 104,50,250,25,960,128,255,0,0,2,this);
         kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,250,25,960,180,255,0,0,3,this);
+        gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,250,25,960,232,255,0,0,4,this);
         pV = new Personenverwaltung(vS);
         fV = new Fahrzeugverwaltung(vS);
-        kV = new Kampfverwaltung();
-        eV = new Einheitenverwaltung();
+        kV = new Kampfverwaltung(vS);
+        eV = new Einheitenverwaltung(vS);
+        gV = new Gesamtverwaltung(vS);
     }
 
     @Override
@@ -39,6 +42,8 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
             eV.setVisible(true);
         }else if(buttonNummer == 3){
             kV.setVisible(true);
+        }else if(buttonNummer == 4){
+            gV.setVisible(true);
         }
 
     }
@@ -59,9 +64,11 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
         vC.draw(fahrzeuge,1);
         vC.draw(einheiten,1);
         vC.draw(kampfhandlungen,1);
+        vC.draw(gesamtUebersicht, 1);
         vC.register(personen,1);
         vC.register(fahrzeuge,1);
         vC.register(einheiten,1);
         vC.register(kampfhandlungen,1);
+        vC.register(gesamtUebersicht, 1);
     }
 }

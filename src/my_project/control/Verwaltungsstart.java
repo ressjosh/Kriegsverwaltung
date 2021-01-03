@@ -29,6 +29,14 @@ public class Verwaltungsstart {
 
     }
 
+    public void erstelleNeueKampfhandlung(){
+
+    }
+
+    public void erstelleNeueEinheit(){
+
+    }
+
     public void gibStandortDatenAus(int x, int y){
         //return sqlControll.processSQL("Hier steht bald der Befehl");
         //return "Hallo \n nochmal";
@@ -59,6 +67,26 @@ public class Verwaltungsstart {
 
     }
     public void ausgabeFahrzeugeStationsort(String staionsort){
+
+    }
+
+    public void ausgabeEinheitMindestErfahrung(){
+
+    }
+
+    public void ausgabeEinheitMindestKampfkraft(){
+
+    }
+
+    public void ausgabeEinheitID(){
+
+    }
+
+    public void giveAllKampfhandlungen(){
+
+    }
+
+    public void showAllEinheiten(){
 
     }
 

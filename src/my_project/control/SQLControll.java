@@ -171,7 +171,6 @@ public class SQLControll {
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Besatzung(" +
                 "Spitzname VARCHAR(20) NOT NULL," +
-                "Fahrzeug INTEGER," +
                 "Erfahrung INTEGER," +
                 "PRIMARY KEY(Spitzname))" +
                 ";"));
@@ -189,6 +188,7 @@ public class SQLControll {
                 "Standort INTEGER," +
                 "Beschreibung VARCHAR(100)," +
                 "Opferzahl INTEGER," +
+                "Feind INTEGER," +
                 "PRIMARY KEY(Codename))" +
                 ";"));
 
@@ -198,20 +198,9 @@ public class SQLControll {
                 "PRIMARY KEY(Codename, Einheit))" +
                 ";"));
 
-        System.out.println(processSQL("CREATE TABLE JR_Kv_AngreifendeTruppe(" +
-                "Codename VARCHAR(10) NOT NULL," +
-                "Feind INTEGER," +
-                "PRIMARY KEY(Codename, Feind))" +
-                ";"));
-
         /*Die Fremdschlüssel definieren
          */
         System.out.println("Ab hier werden die Fremdschlüssel gesetzt");
-
-        System.out.println(processSQL("ALTER TABLE JR_Kv_AngreifendeTruppe " +
-                "ADD CONSTRAINT FOREIGN KEY (Codename) REFERENCES JR_Kv_Kampfhandlung (Codename), " +
-                "ADD CONSTRAINT FOREIGN KEY (Feind) REFERENCES JR_Kv_Feinde (ID) " +
-                ";"));
 
         System.out.println(processSQL("ALTER TABLE JR_Kv_KämpfendeTruppe " +
                 "ADD CONSTRAINT FOREIGN KEY (Codename) REFERENCES JR_Kv_Kampfhandlung (Codename), " +
@@ -219,7 +208,6 @@ public class SQLControll {
                 ";"));
 
         System.out.println(processSQL("ALTER TABLE JR_Kv_Besatzung " +
-                "ADD CONSTRAINT FOREIGN KEY (Fahrzeug) REFERENCES JR_Kv_Fahrzeuge (ID) " +
                 ";"));
 
         System.out.println(processSQL("ALTER TABLE JR_Kv_Einheit " +
@@ -228,7 +216,8 @@ public class SQLControll {
 
 
         System.out.println(processSQL("ALTER TABLE JR_Kv_Kampfhandlung " +
-                "ADD CONSTRAINT FOREIGN KEY (Standort) REFERENCES JR_Kv_Standorte (ID) " +
+                "ADD CONSTRAINT FOREIGN KEY (Standort) REFERENCES JR_Kv_Standorte (ID), " +
+                "ADD CONSTRAINT FOREIGN KEY (Feind) REFERENCES JR_Kv_Feinde (ID) " +
                 ";"));
 
 
