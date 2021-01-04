@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,9 +22,9 @@ public class ErstelleNeuePerson {
     private JTextField a44144TextField;
     private JPanel mainPanel;
     private JFrame frame;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
 
-    public ErstelleNeuePerson(Verwaltungsstart vS) {
+    public ErstelleNeuePerson(CentralControll vS) {
         this.vS = vS;
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);

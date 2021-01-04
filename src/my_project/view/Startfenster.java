@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class startfenster extends GraphicalObject implements ButtonUser{
+public class Startfenster extends GraphicalObject implements ButtonUser{
 
     private BufferedImage startbild;
     private Button startButton;
@@ -18,7 +18,7 @@ public class startfenster extends GraphicalObject implements ButtonUser{
     private Hintergrundbild hintergrund;
     private ViewControll vC;
 
-    public startfenster(ViewController vCer, ViewControll vC){
+    public Startfenster(ViewController vCer, ViewControll vC){
         viewController = vCer;
         this.vC = vC;
         setNewImage("daten/startbild.jpg");

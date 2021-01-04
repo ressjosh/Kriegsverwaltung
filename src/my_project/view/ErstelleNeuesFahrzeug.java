@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,10 +15,10 @@ public class ErstelleNeuesFahrzeug {
     private JTextField textField6;
     private JButton finishAndCreateButton;
     private JPanel mainPanel;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
     private JFrame frame;
 
-    public ErstelleNeuesFahrzeug(Verwaltungsstart vS) {
+    public ErstelleNeuesFahrzeug(CentralControll vS) {
         this.vS = vS;
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);

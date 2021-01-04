@@ -101,9 +101,9 @@ public class SQLControll {
                 tmpsql += ", " + tmpAll[i][0];
             }
             System.out.println("Löschenbefehl  " + tmpsql);
-            processSQL("SET FOREIGN_KEY_CHECKS=0");
+            processSQL("SET FOREIGN_KEY_CHECKS=0;");
             processSQL(tmpsql);
-            processSQL("SET FOREIGN_KEY_CHECKS=1");
+            processSQL("SET FOREIGN_KEY_CHECKS=1;");
 
         }
         System.out.println("Alte Tabellen und Datensätze vollständig entfernt");

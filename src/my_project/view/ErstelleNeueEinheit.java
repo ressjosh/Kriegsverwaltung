@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,10 +14,10 @@ public class ErstelleNeueEinheit {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
     private JFrame frame;
 
-    public ErstelleNeueEinheit(Verwaltungsstart vS) {
+    public ErstelleNeueEinheit(CentralControll vS) {
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

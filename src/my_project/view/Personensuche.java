@@ -1,29 +1,27 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class Personensuche {
-    private JTextField eineEinheitsIDEingebenTextField;
-    private JTextField oderHierEinAlterTextField;
-    private JTextField oderHierEinenNachnamenTextField;
-    private JTextField oderHierEineErkennungsnummerTextField;
-    private JButton ausEinerEinheitButton;
-    private JButton diesesAltersButton;
-    private JButton nachNachnameButton;
-    private JButton dieseErkennungsnummerButton;
+    private JTextField attributwert01;
+    private JTextField attributwert02;
+    private JTextField attributwert03;
+    private JTextField attributwert04;
     private JPanel mainPanel;
     private JButton endSearchButton;
-    private Verwaltungsstart vS;
+    private JLabel Attribut01;
+    private JLabel Attribut02;
+    private JLabel Attribut03;
+    private JLabel Attribut04;
+    private CentralControll vS;
     private JFrame frame;
 
 
-    public Personensuche(Verwaltungsstart vS) {
+    public Personensuche(CentralControll vS) {
         frame = new JFrame("'Suche nach bestimmten Personen'");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -31,39 +29,61 @@ public class Personensuche {
         frame.setVisible(true);
         this.vS = vS;
 
-        ausEinerEinheitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabePersonenEinheit(eineEinheitsIDEingebenTextField.getText());
-            }
-        });
-
-        nachNachnameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabePersonenNachname(oderHierEinenNachnamenTextField.getText());
-            }
-        });
-
-        dieseErkennungsnummerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabePersonenErkennungsnummer(oderHierEineErkennungsnummerTextField.getText());
-            }
-        });
-
-        diesesAltersButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabePersonenAlter(oderHierEinAlterTextField.getText());
-            }
-        });
-
         endSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int tmp = countSuchparameter();
+                String[] attribute = suchParameterAusgeben(tmp);
+
+                if(tmp == 1){
+                    vS.ausgabePersonEinParameter(attribute[0], attribute[1]);
+                }else if(tmp == 2){
+                    vS.ausgabePersonZweiParameter(attribute[0], attribute[1], attribute[2], attribute[3]);
+                }else if(tmp == 3){
+                    vS.ausgabePersonDreiParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                }else if(tmp == 4){
+                    vS.ausgabePersonVierParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6], attribute[7]);
+                }
+
                 frame.dispose();
             }
         });
+    }
+
+    private int countSuchparameter(){
+        int result = 0;
+        if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("EinheitsID")){
+            result++;
+        }
+        if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Alter in ganzen Zahlen")){
+            result++;
+        }
+        if(!attributwert03.getText().equals("") && !attributwert03.getText().equals("Mustermann")){
+            result++;
+        }if(!attributwert04.getText().equals("") && !attributwert04.getText().equals("Erkennungsnummer")){
+            result++;
+        }
+
+        System.out.println("Anzahl Suchattribute: " + result);
+        return result;
+    }
+
+    private String[] suchParameterAusgeben(int anzahlParameter){
+        String zwischenResultat = "";
+        if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("EinheitsID")){
+            zwischenResultat = zwischenResultat + Attribut01.getText() + "§" + attributwert01.getText();
+        }
+        if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Alter in ganzen Zahlen")){
+            zwischenResultat = zwischenResultat + "§" + Attribut02.getText() + "§" + attributwert02.getText();
+        }
+        if(!attributwert03.getText().equals("") && !attributwert03.getText().equals("Mustermann")){
+            zwischenResultat = zwischenResultat + "§" + Attribut03.getText() + "§" + attributwert03.getText();
+        }if(!attributwert04.getText().equals("") && !attributwert04.getText().equals("Erkennungsnummer")){
+            zwischenResultat = zwischenResultat + "§" + Attribut04.getText() + "§" + attributwert04.getText();
+        }
+
+        String[] result = zwischenResultat.split("§");
+        System.out.println(zwischenResultat);
+        return result;
     }
 }

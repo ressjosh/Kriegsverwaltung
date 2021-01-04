@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class Einheitensuche {
 
-    private Verwaltungsstart vS;
+    private CentralControll vS;
     private JFrame frame;
     private JPanel mainPanel;
     private JTextField mindestErfahrungswertTextField;
@@ -19,7 +19,7 @@ public class Einheitensuche {
     private JButton searchButton2;
     private JButton finishButton;
 
-    public Einheitensuche(Verwaltungsstart vS) {
+    public Einheitensuche(CentralControll vS) {
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="my_project.view.Personensuche">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -8,84 +8,84 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="266fc" class="javax.swing.JTextField" binding="eineEinheitsIDEingebenTextField" default-binding="true">
+      <component id="266fc" class="javax.swing.JTextField" binding="attributwert01">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Eine EinheitsID eingeben"/>
+          <text value="EinheitsID"/>
         </properties>
       </component>
-      <component id="dada1" class="javax.swing.JTextField" binding="oderHierEinAlterTextField" default-binding="true">
+      <component id="dada1" class="javax.swing.JTextField" binding="attributwert02">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Oder hier ein Alter"/>
+          <text value="Alter in ganzen Zahlen"/>
         </properties>
       </component>
-      <component id="1dfb3" class="javax.swing.JTextField" binding="oderHierEinenNachnamenTextField" default-binding="true">
+      <component id="1dfb3" class="javax.swing.JTextField" binding="attributwert03">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Oder hier einen Nachnamen"/>
+          <text value="Mustermann"/>
         </properties>
       </component>
-      <component id="662c5" class="javax.swing.JTextField" binding="oderHierEineErkennungsnummerTextField" default-binding="true">
+      <component id="662c5" class="javax.swing.JTextField" binding="attributwert04">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Oder hier eine Erkennungsnummer"/>
-        </properties>
-      </component>
-      <component id="d3905" class="javax.swing.JButton" binding="ausEinerEinheitButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Aus einer Einheit"/>
-        </properties>
-      </component>
-      <component id="5b2a2" class="javax.swing.JButton" binding="nachNachnameButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Nach Nachname"/>
-        </properties>
-      </component>
-      <component id="6c301" class="javax.swing.JButton" binding="dieseErkennungsnummerButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Diese Erkennungsnummer"/>
-        </properties>
-      </component>
-      <component id="88ac8" class="javax.swing.JButton" binding="diesesAltersButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Dieses Alters"/>
+          <text value="Erkennungsnummer"/>
         </properties>
       </component>
       <component id="ebb8e" class="javax.swing.JButton" binding="endSearchButton" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="End search"/>
+          <text value="Search an Finish"/>
+        </properties>
+      </component>
+      <component id="4a0d2" class="javax.swing.JLabel" binding="Attribut01">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Einheit"/>
+        </properties>
+      </component>
+      <component id="5b9b1" class="javax.swing.JLabel" binding="Attribut02">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Age"/>
+        </properties>
+      </component>
+      <component id="ad55c" class="javax.swing.JLabel" binding="Attribut03">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Nachname"/>
+        </properties>
+      </component>
+      <component id="7666" class="javax.swing.JLabel" binding="Attribut04">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Erkennungsnummer"/>
         </properties>
       </component>
     </children>

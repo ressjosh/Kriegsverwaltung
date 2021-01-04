@@ -7,7 +7,7 @@ import my_project.control.ViewControll;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-public class standortmarke extends InteractiveGraphicalObject {
+public class Standortmarke extends InteractiveGraphicalObject {
 
     private int y;
     private int x;
@@ -15,7 +15,7 @@ public class standortmarke extends InteractiveGraphicalObject {
     private ViewControll vC;
 
 
-    public standortmarke(int y, int x, ViewControll vC) {
+    public Standortmarke(int y, int x, ViewControll vC) {
         this.vC = vC;
         this.y = y;
         this.x = x;

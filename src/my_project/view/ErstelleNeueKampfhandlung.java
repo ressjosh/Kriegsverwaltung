@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,10 +14,10 @@ public class ErstelleNeueKampfhandlung {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
     private JFrame frame;
 
-    public ErstelleNeueKampfhandlung(Verwaltungsstart vS) {
+    public ErstelleNeueKampfhandlung(CentralControll vS) {
         this.vS = vS;
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);

@@ -1,6 +1,6 @@
 package my_project.view;
 
-import my_project.control.Verwaltungsstart;
+import my_project.control.CentralControll;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,17 +10,17 @@ public class Fahrzeugsuche {
 
     private JFrame frame;
     private JPanel mainPanel;
-    private JTextField typTextField;
-    private JTextField stationsortIDTextField;
-    private JTextField baujahrTextField;
-    private JButton sucheNachTypButton;
-    private JButton sucheNachFahrzeugenAnButton;
-    private JButton sucheFahrzeugeAusDiesemButton;
+    private JTextField attributwert01;
+    private JTextField attributwert02;
+    private JTextField attributwert03;
     private JButton finishButton;
-    private Verwaltungsstart vS;
+    private JLabel Attribut03;
+    private JLabel Attribut02;
+    private JLabel Attribut01;
+    private CentralControll vS;
 
 
-    public Fahrzeugsuche(Verwaltungsstart vS) {
+    public Fahrzeugsuche(CentralControll vS) {
         this.vS = vS;
         frame = new JFrame("Ergebnis der Anfrage");
         frame.setContentPane(mainPanel);
@@ -31,27 +31,54 @@ public class Fahrzeugsuche {
         finishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int tmp = countSuchparameter();
+                String[] attribute = suchParameterAusgeben(tmp);
+
+                if(tmp == 1){
+                    vS.ausgabeFahrzeugEinParameter(attribute[0], attribute[1]);
+                }else if(tmp == 2){
+                    vS.ausgabeFahrzeugZweiParameter(attribute[0], attribute[1], attribute[2], attribute[3]);
+                }else if(tmp == 3){
+                    vS.ausgabeFahrzeugDreiParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                }
                 frame.dispose();
             }
         });
 
-        sucheFahrzeugeAusDiesemButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabeFahrzeugeBaujahr(baujahrTextField.getText());
-            }
-        });
-        sucheNachFahrzeugenAnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabeFahrzeugeStationsort(stationsortIDTextField.getText());
-            }
-        });
-        sucheNachTypButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vS.ausgabeFahrzeugeTyp(baujahrTextField.getText());
-            }
-        });
+
+    }
+
+    private int countSuchparameter(){
+        int result = 0;
+        if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("Typ ID des Fahrzeuges")){
+            result++;
+        }
+        if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Stationsort (ID)")){
+            result++;
+        }
+        if(!attributwert03.getText().equals("") && !attributwert03.getText().equals("Baujahr")){
+            result++;
+        }
+
+        System.out.println("Anzahl Suchattribute: " + result);
+        return result;
+    }
+
+    private String[] suchParameterAusgeben(int anzahlParameter){
+        String zwischenResultat = "";
+        if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("Typ ID des Fahrzeuges")){
+            zwischenResultat = zwischenResultat + Attribut01.getText() + "§" + attributwert01.getText();
+        }
+        if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Stationsort (ID)")){
+            zwischenResultat = zwischenResultat + "§" + Attribut02.getText() + "§" + attributwert02.getText();
+        }
+        if(!attributwert03.getText().equals("") && !attributwert03.getText().equals("Baujahr")){
+            zwischenResultat = zwischenResultat + "§" + Attribut03.getText() + "§" + attributwert03.getText();
+        }
+
+        String[] result = zwischenResultat.split("§");
+        System.out.println(zwischenResultat);
+        return result;
+
     }
 }

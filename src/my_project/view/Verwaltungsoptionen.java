@@ -2,46 +2,41 @@ package my_project.view;
 
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
-import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
-import my_project.control.Verwaltungsstart;
-
-import java.awt.event.MouseEvent;
+import my_project.control.CentralControll;
 
 public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
 
     private Button personen, fahrzeuge, einheiten, kampfhandlungen, gesamtUebersicht;
-    private Personenverwaltung pV;
-    private Kampfverwaltung kV;
-    private Einheitenverwaltung eV;
-    private Fahrzeugverwaltung fV;
     private Gesamtverwaltung gV;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
+    private Aktionsmanager aM;
 
-    public Verwaltungsoptionen(Verwaltungsstart vS) {
+    public Verwaltungsoptionen(CentralControll vS) {
         this.vS = vS;
+        aM = new Aktionsmanager(vS);
         personen = new Button("Personen- ", 932, 0,50,250,25,960,24,255,0,0,0,this);
         fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,250,25,960,76,255,0,0,1,this);
         einheiten = new Button("Einheiten- ", 932, 104,50,250,25,960,128,255,0,0,2,this);
-        kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,250,25,960,180,255,0,0,3,this);
+        kampfhandlungen = new Button("Kampf-", 932, 156,50,250,25,960,180,255,0,0,3,this);
         gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,250,25,960,232,255,0,0,4,this);
-        pV = new Personenverwaltung(vS);
-        fV = new Fahrzeugverwaltung(vS);
-        kV = new Kampfverwaltung(vS);
-        eV = new Einheitenverwaltung(vS);
         gV = new Gesamtverwaltung(vS);
     }
 
     @Override
     public void buttoneffect(int buttonNummer) {
         if(buttonNummer == 0){
-            pV.setVisible(true);
+            aM.setAktuelleTabelle(1);
+            aM.setVisible(true);
         }else if(buttonNummer ==1){
-            fV.setVisible(true);
+            aM.setAktuelleTabelle(2);
+            aM.setVisible(true);
         }else if(buttonNummer == 2){
-            eV.setVisible(true);
+            aM.setAktuelleTabelle(3);
+            aM.setVisible(true);
         }else if(buttonNummer == 3){
-            kV.setVisible(true);
+            aM.setAktuelleTabelle(4);
+            aM.setVisible(true);
         }else if(buttonNummer == 4){
             gV.setVisible(true);
         }

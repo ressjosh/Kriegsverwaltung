@@ -1,28 +1,26 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.abitur.datenstrukturen.List;
-import my_project.model.EuropakartenModel;
 import my_project.view.Verwaltungsoptionen;
 import my_project.view.Europakarte;
-import my_project.view.standortmarke;
-import my_project.view.startfenster;
+import my_project.view.Standortmarke;
+import my_project.view.Startfenster;
 
 public class ViewControll {
-    private startfenster startfenster;
+    private Startfenster startfenster;
     private Europakarte europakarte;
     private Verwaltungsoptionen verwaltungsoptionen;
     private ViewController vC;
-    private Verwaltungsstart vS;
+    private CentralControll vS;
     private  SQLControll sC;
 
-    public ViewControll(ViewController vC,Verwaltungsstart vS, SQLControll sC){
+    public ViewControll(ViewController vC, CentralControll vS, SQLControll sC){
         this.sC = sC;
         this.vS = vS;
         this.vC = vC;
         vC.createScene();
         vC.createScene();
-        startfenster = new startfenster(vC,this);
+        startfenster = new Startfenster(vC,this);
         europakarte = new Europakarte(vC, this);
         verwaltungsoptionen = new Verwaltungsoptionen(vS);
         drawUndRegister();
@@ -37,7 +35,7 @@ public class ViewControll {
 
     public void newStandort(String name, int y, int x, int iD, int kampfkraft){
         vS.erstelleNeuenStandort();
-        standortmarke tmp = new standortmarke(y, x, this);
+        Standortmarke tmp = new Standortmarke(y, x, this);
         vS.getEkM().standortHinzufuegen(tmp);
         vC.draw(tmp, 1);
         vC.register(tmp, 1);
@@ -57,7 +55,7 @@ public class ViewControll {
 
     }
 
-    public Verwaltungsstart getvS() {
+    public CentralControll getvS() {
         return vS;
     }
 }

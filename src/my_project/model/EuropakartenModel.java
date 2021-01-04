@@ -2,11 +2,11 @@ package my_project.model;
 
 import KAGO_framework.model.abitur.datenstrukturen.List;
 import my_project.control.ViewControll;
-import my_project.view.standortmarke;
+import my_project.view.Standortmarke;
 
 public class EuropakartenModel {
 
-    private List<standortmarke> standortmarken;
+    private List<Standortmarke> standortmarken;
     private ViewControll vC;
 
     public EuropakartenModel(ViewControll viewControll){
@@ -14,7 +14,7 @@ public class EuropakartenModel {
         standortmarken = new List<>();
     }
 
-    public void standortHinzufuegen(standortmarke sm){
+    public void standortHinzufuegen(Standortmarke sm){
         standortmarken.append(sm);
     }
 }
