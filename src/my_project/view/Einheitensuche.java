@@ -29,21 +29,21 @@ public class Einheitensuche {
         searchButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.ausgabeEinheitID();
+                vS.ausgabeEinheitID(bestimmteIDTextField.getText());
             }
         });
 
         searchButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.ausgabeEinheitMindestKampfkraft();
+                vS.ausgabeEinheitMindestKampfkraft(mindestKampfkraftTextField.getText());
             }
         });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.ausgabeEinheitMindestErfahrung();
+                vS.ausgabeEinheitMindestErfahrung(mindestErfahrungswertTextField.getText());
             }
         });
         finishButton.addActionListener(new ActionListener() {

@@ -34,7 +34,7 @@ public class ViewControll {
     }
 
     public void newStandort(String name, int y, int x, int iD, int kampfkraft){
-        vS.erstelleNeuenStandort();
+        vS.erstelleNeuenStandort(name, "" + x, "" + y, ""+kampfkraft);
         Standortmarke tmp = new Standortmarke(y, x, this);
         vS.getEkM().standortHinzufuegen(tmp);
         vC.draw(tmp, 1);

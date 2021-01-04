@@ -20,7 +20,7 @@ public class ErstelleNeuesFahrzeug {
 
     public ErstelleNeuesFahrzeug(CentralControll vS) {
         this.vS = vS;
-        frame = new JFrame("Ergebnis der Anfrage");
+        frame = new JFrame("Fahrzeugerstellung");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
@@ -28,7 +28,7 @@ public class ErstelleNeuesFahrzeug {
         finishAndCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.erstelleNeuesFahrzeug();
+                vS.erstelleNeuesFahrzeug(textField4.getText(), textField1.getText(), textField5.getText(), textField2.getText(), textField4.getText(), textField3.getText());
                 frame.dispose();
             }
         });

@@ -23,24 +23,25 @@ public class CentralControll {
     //SQL-Umwandlung
 
     //Methoden zur Erstellung eines neuen Datensatzes
-    public void erstelleNeuenStandort(){
 
+    public void erstelleNeuenStandort(String iD, String koordinate01, String koordinate02, String gesamtkampfkraft){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void erstelleNeuePerson(){
-
+    public void erstelleNeuePerson(String erkennungsnummer, String vorname, String nachname, String age, String geschlecht, String geburtsjahr, String einheit, String straße, String hausnummer, String plz, String stadt, String land){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void erstelleNeuesFahrzeug(){
-
+    public void erstelleNeuesFahrzeug(String iD, String typ, String baujahr,  String fahrzeugfuehrer, String stationsort, String besatzung){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void erstelleNeueKampfhandlung(){
-
+    public void erstelleNeueKampfhandlung(String codename, String standort, String beschreibung, String opferzahl, String feind, String[] einheiten){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void erstelleNeueEinheit(){
-
+    public void erstelleNeueEinheit(String iD, String truppstaerke, String oberbefehlshaber, String erfahrungwert, String kampfkraft, String imEinsatz){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     //Methoden zur Ausgabe einzelner Datensätze
@@ -89,64 +90,64 @@ public class CentralControll {
         sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void ausgabeEinheitMindestErfahrung(){
-
+    public void ausgabeEinheitMindestErfahrung(String parameterwert){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void ausgabeEinheitMindestKampfkraft(){
-
+    public void ausgabeEinheitMindestKampfkraft(String parameterwert){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
-    public void ausgabeEinheitID(){
-
+    public void ausgabeEinheitID(String parameterwert){
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     //Methoden um alle Datensätze auszugeben
 
     public void showAllPersonen(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllFahrzeuge(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllKampfhandlungen(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllEinheiten(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllFahrzeugtypen(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllBesatzungen(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void showAllFeinde(){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     //Methoden um bestimmten Datensatz zu löschen
 
     public void deleteFahrzeug(String IDZuloeschen){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void deletePerson(String IDZuloeschen){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void deleteEinheit(String IDZuloeschen){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
     public void deleteKampfhandlung(String IDZuloeschen){
-
+        sqlControll.processSQLMitRueckgabe("");
     }
 
 }

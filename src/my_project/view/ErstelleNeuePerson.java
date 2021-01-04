@@ -35,7 +35,7 @@ public class ErstelleNeuePerson {
         finishAndCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.erstelleNeuePerson();
+                vS.erstelleNeuePerson(a111111118StelligTextField.getText(), maxTextField.getText(), mustermannTextField.getText(), a20TextField.getText(), mTextField.getText(), a01012000TextField.getText(), IDTextField.getText(), musteralleeTextField.getText(), a111TextField.getText(), a44144TextField.getText(), dortmundTextField.getText(), deutschlandTextField.getText());
                 frame.dispose();
             }
         });

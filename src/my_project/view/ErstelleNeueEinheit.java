@@ -28,7 +28,7 @@ public class ErstelleNeueEinheit {
         createAndFinishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.erstelleNeueEinheit();
+                vS.erstelleNeueEinheit(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), "true");
                 frame.dispose();
             }
         });

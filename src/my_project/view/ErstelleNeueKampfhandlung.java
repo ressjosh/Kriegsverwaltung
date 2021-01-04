@@ -19,7 +19,7 @@ public class ErstelleNeueKampfhandlung {
 
     public ErstelleNeueKampfhandlung(CentralControll vS) {
         this.vS = vS;
-        frame = new JFrame("Ergebnis der Anfrage");
+        frame = new JFrame("Kampferstellung");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
@@ -28,9 +28,14 @@ public class ErstelleNeueKampfhandlung {
         createAnFinishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.erstelleNeueKampfhandlung();
+                String[] tmp = splitteEinheitenAuf();
+                vS.erstelleNeueKampfhandlung(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), textField5.getText(), tmp);
                 frame.dispose();
             }
         });
+    }
+
+    public String[] splitteEinheitenAuf(){
+        return new String[0];
     }
 }
