@@ -14,6 +14,7 @@ public class ErstelleNeueKampfhandlung {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private JTextField textField6;
     private CentralControll vS;
     private JFrame frame;
 
@@ -36,6 +37,7 @@ public class ErstelleNeueKampfhandlung {
     }
 
     public String[] splitteEinheitenAuf(){
-        return new String[0];
+        String[] tmp = textField6.getText().split(";");
+        return tmp;
     }
 }

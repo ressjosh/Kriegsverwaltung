@@ -186,7 +186,7 @@ public class SQLControll {
 
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Kampfhandlung(" +
-                "Codename VARCHAR(10) NOT NULL," +
+                "Codename INTEGER NOT NULL," +
                 "Standort INTEGER," +
                 "Beschreibung VARCHAR(100)," +
                 "Opferzahl INTEGER," +
@@ -195,8 +195,8 @@ public class SQLControll {
                 ";"));
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_KämpfendeTruppe(" +
-                "Codename VARCHAR(10) NOT NULL," +
-                "Einheit INTEGER," +
+                "Codename INTEGER NOT NULL," +
+                "Einheit INTEGER NOT NULL," +
                 "PRIMARY KEY(Codename, Einheit))" +
                 ";"));
 
@@ -326,6 +326,11 @@ public class SQLControll {
                 "('00000003', 'Heinz', 'Oktober', 37, 'm', '12.12.1983', 001," +
                 " true, false, 'Lisaallee', 98, 44143, 'Dortmund'," +
                 " 'Deutschland') " +
+                ";"));
+
+        System.out.println(processSQL("INSERT INTO JR_Kv_Einheit " +
+                "VALUES " +
+                "(002, 12, 002, 9, 10,  true) " +
                 ";"));
 
 

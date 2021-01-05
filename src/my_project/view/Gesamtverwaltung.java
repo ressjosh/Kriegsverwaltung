@@ -26,7 +26,7 @@ public class Gesamtverwaltung {
         feindeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.showAllFeinde();
+                vS.showAll("Feinde");
                 frame.dispose();
             }
         });
@@ -34,7 +34,7 @@ public class Gesamtverwaltung {
         besatzungButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.showAllBesatzungen();
+                vS.showAll("Besatzung");
                 frame.dispose();
             }
         });
@@ -42,7 +42,7 @@ public class Gesamtverwaltung {
         fahrzeugtypenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.showAllFahrzeugtypen();
+                vS.showAll("Fahrzeugtypen");
                 frame.dispose();
             }
         });

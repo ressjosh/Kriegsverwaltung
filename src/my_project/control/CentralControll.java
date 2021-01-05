@@ -25,23 +25,57 @@ public class CentralControll {
     //Methoden zur Erstellung eines neuen Datensatzes
 
     public void erstelleNeuenStandort(String iD, String koordinate01, String koordinate02, String gesamtkampfkraft){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQL("INSERT INTO JR_Kv_Standorte " +
+                "                VALUES " +
+                "                ("+iD+", "+koordinate01+", "+koordinate02+", "+gesamtkampfkraft+
+                "                ;");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Standorte WHERE ID =  " + iD + "; ");
+
     }
 
     public void erstelleNeuePerson(String erkennungsnummer, String vorname, String nachname, String age, String geschlecht, String geburtsjahr, String einheit, String straße, String hausnummer, String plz, String stadt, String land){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQL("INSERT INTO JR_Kv_Personen " +
+                "                VALUES " +
+                "                ('"+erkennungsnummer+"', '"+vorname+"', '"+nachname+"', "+age+", '"+geschlecht+"', '"+geburtsjahr+"', "+einheit+"," +
+                "                 true, false, '"+straße+"', "+hausnummer+", "+plz+", '"+stadt+"'," +
+                "                 '"+land+"') " +
+                "                ;");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit JOIN JR_Kv_Personen ON JR_Kv_Personen.einheit = JR_Kv_Einheit.ID WHERE Erkennungsnummer =  " + erkennungsnummer + "; ");
+
     }
 
     public void erstelleNeuesFahrzeug(String iD, String typ, String baujahr,  String fahrzeugfuehrer, String stationsort, String besatzung){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("INSERT INTO JR_Kv_Fahrzeuge " +
+                "VALUES" +
+                "("+iD+", '" + typ + "', " + baujahr + ", ' "+fahrzeugfuehrer+"', " +stationsort + ", false, ' "+ besatzung + "' )");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Fahrzeuge JOIN JR_Kv_Besatzung ON JR_Kv_Fahrzeuge.Besatzung = JR_Kv_Besatzung.Spitzname WHERE ID = " + iD + "; ");
+
     }
 
     public void erstelleNeueKampfhandlung(String codename, String standort, String beschreibung, String opferzahl, String feind, String[] einheiten){
-        sqlControll.processSQLMitRueckgabe("");
+        System.out.println(sqlControll.processSQL("INSERT INTO JR_Kv_Kampfhandlung " +
+                "VALUES " +
+                "(' " + codename + "' , " + standort + ", '" + beschreibung +"' , " + opferzahl + ", " + feind  +
+                ");"));
+            for(int i = 0; i < einheiten.length; i++){
+
+;                System.out.println(sqlControll.processSQL("INSERT INTO JR_Kv_KämpfendeTruppe " +
+                        "VALUES " +
+                        "( " + codename + " , " + einheiten[i] +
+                        ");"));
+
+            }
+
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Kampfhandlung WHERE Codename = ' " + codename + "' ");
+
     }
 
     public void erstelleNeueEinheit(String iD, String truppstaerke, String oberbefehlshaber, String erfahrungwert, String kampfkraft, String imEinsatz){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQL("INSERT INTO JR_Kv_Einheit " +
+                "                VALUES " +
+                "                ("+iD+", "+truppstaerke+", "+oberbefehlshaber+", "+erfahrungwert+", "+kampfkraft+"," +imEinsatz+
+                "                );");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit JOIN JR_Kv_Personen ON JR_Kv_Einheit.Oberbefehlshaber = JR_Kv_Personen.Erkennungsnummer WHERE ID = ' " + iD + "' ");
     }
 
     //Methoden zur Ausgabe einzelner Datensätze
@@ -104,39 +138,9 @@ public class CentralControll {
 
     //Methoden um alle Datensätze auszugeben
 
-    public void showAllPersonen(){
+    public void showAll(String tabelle){
         sqlControll.processSQLMitRueckgabe("SELECT * " +
-                "FROM JR_Kv_Personen;");
-    }
-
-    public void showAllFahrzeuge(){
-        sqlControll.processSQLMitRueckgabe("SELECT * " +
-                "FROM JR_Kv_Fahrzeuge;");
-    }
-
-    public void showAllKampfhandlungen(){
-        sqlControll.processSQLMitRueckgabe("SELECT *" +
-                "FROM JR_Kv_Kampfhandlungen;");
-    }
-
-    public void showAllEinheiten(){
-        sqlControll.processSQLMitRueckgabe("SELECT *" +
-                "FROM JR_Kv_Einheit;");
-    }
-
-    public void showAllFahrzeugtypen(){
-        sqlControll.processSQLMitRueckgabe("SELECT * " +
-                "FROM JR_Kv_Fahrzeugtypen;");
-    }
-
-    public void showAllBesatzungen(){
-        sqlControll.processSQLMitRueckgabe("SELECT * " +
-                "FROM JR_Kv_Besatzung;");
-    }
-
-    public void showAllFeinde(){
-        sqlControll.processSQLMitRueckgabe("SELECT * " +
-                "FROM JR_Kv_Feinde;");
+                "FROM JR_Kv_"+tabelle+";");
     }
 
     //Methoden um bestimmten Datensatz zu löschen

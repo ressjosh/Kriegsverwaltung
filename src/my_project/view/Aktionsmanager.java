@@ -61,13 +61,13 @@ public class Aktionsmanager {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(aktuelleTabelle == 1){
-                    vS.showAllPersonen();
+                    vS.showAll("Personen");
                 }else if(aktuelleTabelle == 2){
-                    vS.showAllFahrzeuge();
+                    vS.showAll("Fahrzeuge");
                 }else if(aktuelleTabelle == 3){
-                    vS.showAllEinheiten();
+                    vS.showAll("Einheit");
                 }else if(aktuelleTabelle == 4){
-                    vS.showAllKampfhandlungen();
+                    vS.showAll("Kampfhandlungen");
                 }
                 frame.dispose();
             }
