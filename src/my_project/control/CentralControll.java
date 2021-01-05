@@ -105,31 +105,38 @@ public class CentralControll {
     //Methoden um alle Datensätze auszugeben
 
     public void showAllPersonen(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * " +
+                "FROM JR_Kv_Personen;");
     }
 
     public void showAllFahrzeuge(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * " +
+                "FROM JR_Kv_Fahrzeuge;");
     }
 
     public void showAllKampfhandlungen(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT *" +
+                "FROM JR_Kv_Kampfhandlungen;");
     }
 
     public void showAllEinheiten(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT *" +
+                "FROM JR_Kv_Einheit;");
     }
 
     public void showAllFahrzeugtypen(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * " +
+                "FROM JR_Kv_Fahrzeugtypen;");
     }
 
     public void showAllBesatzungen(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * " +
+                "FROM JR_Kv_Besatzung;");
     }
 
     public void showAllFeinde(){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * " +
+                "FROM JR_Kv_Feinde;");
     }
 
     //Methoden um bestimmten Datensatz zu löschen

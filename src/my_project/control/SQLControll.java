@@ -68,7 +68,8 @@ public class SQLControll {
             dbController.executeStatement(statement);
             QueryResult queryResult = dbController.getCurrentQueryResult();
             if(queryResult !=null) {
-                return formatSQLOutput(queryResult.getColumnNames(), queryResult.getData());
+                return "Success";
+                //return formatSQLOutput(queryResult.getColumnNames(), queryResult.getData());
             }else{
                 String error = dbController.getErrorMessage();
                 if(error !=null) {
@@ -177,7 +178,8 @@ public class SQLControll {
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Feinde(" +
                 "ID INTEGER NOT NULL," +
-                "Name VARCHAR(20)," +
+                "Name VARCHAR(30)," +
+                "Grund VARCHAR(50)," +
                 "Kampfkraft INTEGER," +
                 "PRIMARY KEY(ID))" +
                 ";"));
@@ -236,6 +238,96 @@ public class SQLControll {
 
     private void erstelleAnfangsdatensaetze(){
         System.out.println("-------------------------Ab hier werden die Anfangsdatensätze erzeugt------------------------");
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('P330', 'Panzer', 7300, 6, 560) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('P530', 'Panzer', 12259, 7, 1010) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('T10', 'Truppentransporter', 830, 47, 450) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('H87', 'Helikopter', 2200, 6, 1547) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('FS2020', 'Fregatte', 24000, 470, 8600) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
+                "VALUES " +
+                "('Corsa', 'Opel', 73, 7, 2) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
+                "VALUES " +
+                "('Mausi', 6) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
+                "VALUES " +
+                "('Todesengel', 10) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
+                "VALUES " +
+                "('Frisch Fleisch', 1) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
+                "VALUES " +
+                "('Wiesel', 8) " +
+                ";"));
+
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(01, 'Russland', 'Ist Europa zu europäisch',  9) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(02, 'Italien', 'Die Pasta wurde ohne Löffel gegessen',  2) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(03, 'Großbritannien',  'Wurden im Fußball geschlagen',  6) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(04, 'Dunkler Hexenzirkel', 'Langeweile',  10) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(05, 'Afrikanische Nordstaaten', 'Möchten Wasser zum Aldipreis',  0) " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
+                "VALUES " +
+                "(06, 'Nordkorea', 'Möchten Demokratie nach Europa bringen',  3) " +
+                ";"));
+
+        System.out.println(processSQL("INSERT INTO JR_Kv_Einheit " +
+                "VALUES " +
+                "(001, 12, null, 9, 10,  true) " +
+                ";"));
+
+        System.out.println(processSQL("INSERT INTO JR_Kv_Personen " +
+                "VALUES " +
+                "('00000001', 'Lisa', 'Nguyen', 12, 'w', '12.02.2008', 001," +
+                " true, false, 'Lisaallee', 110, 44143, 'Dortmund'," +
+                " 'Deutschland') " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Personen " +
+                "VALUES " +
+                "('00000002', 'Detlef', 'Müller', 102, 'd', '2.04.1918', 001," +
+                " true, false, 'Lisaallee', 112, 44143, 'Dortmund'," +
+                " 'Deutschland') " +
+                ";"));
+        System.out.println(processSQL("INSERT INTO JR_Kv_Personen " +
+                "VALUES " +
+                "('00000003', 'Heinz', 'Oktober', 37, 'm', '12.12.1983', 001," +
+                " true, false, 'Lisaallee', 98, 44143, 'Dortmund'," +
+                " 'Deutschland') " +
+                ";"));
+
 
     }
 }
