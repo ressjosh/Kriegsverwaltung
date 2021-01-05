@@ -18,7 +18,7 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
         personen = new Button("Personen- ", 932, 0,50,250,25,960,24,255,0,0,0,this);
         fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,250,25,960,76,255,0,0,1,this);
         einheiten = new Button("Einheiten- ", 932, 104,50,250,25,960,128,255,0,0,2,this);
-        kampfhandlungen = new Button("Kampf-", 932, 156,50,250,25,960,180,255,0,0,3,this);
+        kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,250,25,960,180,255,0,0,3,this);
         gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,250,25,960,232,255,0,0,4,this);
         gV = new Gesamtverwaltung(vS);
     }

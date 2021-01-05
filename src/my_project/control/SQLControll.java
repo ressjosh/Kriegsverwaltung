@@ -231,5 +231,11 @@ public class SQLControll {
                 "ADD CONSTRAINT FOREIGN KEY (Stationsort) REFERENCES JR_Kv_Standorte (ID), " +
                 "ADD CONSTRAINT FOREIGN KEY (Besatzung) REFERENCES JR_Kv_Besatzung (Spitzname) " +
                 ";"));
+        erstelleAnfangsdatensaetze();
+    }
+
+    private void erstelleAnfangsdatensaetze(){
+        System.out.println("-------------------------Ab hier werden die Anfangsdatensätze erzeugt------------------------");
+
     }
 }
