@@ -33,9 +33,9 @@ public class Kampfhandlungssuche {
                 String[] attribute = suchParameterAusgeben(tmp);
 
                 if(tmp == 1){
-                    vS.ausgabeKampfhandlungEinParameter(attribute[0], attribute[1]);
+                    vS.ausgabeKampfhandlungEinParameter( attribute[0], attribute[1]);
                 }else if(tmp == 2) {
-                    vS.ausgabeKampfhandlungZweiParameter(attribute[0], attribute[1], attribute[2], attribute[3]);
+                    vS.ausgabeKampfhandlungZweiParameter( attribute[0], attribute[1], attribute[2], attribute[3]);
                 }
 
                 frame.dispose();

@@ -81,59 +81,79 @@ public class CentralControll {
     //Methoden zur Ausgabe einzelner Datensätze
 
     public void gibStandortDatenAus(int x, int y){
-        sqlControll.processSQLMitRueckgabe("SQL um Standort mit bestimmten Koordinaten zurückzugeben");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Standorte WHERE Koordinate01 = " + x + "AND Koordinate02 = " + y + ";");
     }
 
-    public void ausgabePersonEinParameter(String Attribut, String Attributwert){
-        sqlControll.processSQLMitRueckgabe("");
+
+
+
+    public void ausgabePersonenEinParameter( String Attribut, String Attributwert){
+        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+                " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
+                " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
+                " WHERE " + Attribut + " LIKE '" + Attributwert + "';");
     }
 
-    public void ausgabePersonZweiParameter(String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabePersonenZweiParameter(String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
+        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+                " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
+                " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
+                " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' ;");
     }
 
-    public void ausgabePersonDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabePersonenDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
+        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+                " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
+                " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
+                " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "';");
     }
 
-    public void ausgabePersonVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabePersonenVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
+        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+                " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
+                " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
+                " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "' AND " + Attribut04 + " LIKE '" + Attributwert04+ "' ;");
     }
 
-    public void ausgabeFahrzeugEinParameter(String Attribut, String Attributwert){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabeFahrzeugeEinParameter( String Attribut, String Attributwert){
+       sqlControll.processSQLMitRueckgabe("SELECT ID, Baujahr,  FROM JR_Kv_Fahrzeuge"  + " WHERE " + Attribut + " LIKE '" + Attributwert + "';");
     }
 
-    public void ausgabeFahrzeugZweiParameter(String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabeFahrzeugeZweiParameter( String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Fahrzeuge"  + " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' ;");
     }
 
-    public void ausgabeFahrzeugDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabeFahrzeugeDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Fahrzeuge"  + " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "';");
     }
 
-    public void ausgabeFahrzeugVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabeFahrzeugeVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Fahrzeuge"  + " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "' AND " + Attribut04 + " LIKE '" + Attributwert04+ "' ;");
     }
 
-    public void ausgabeKampfhandlungEinParameter(String Attribut, String Attributwert){
-        sqlControll.processSQLMitRueckgabe("");
+    public void ausgabeKampfhandlungEinParameter( String Attribut, String Attributwert){
+        System.out.println("SELECT * FROM JR_Kv_Personen WHERE " + Attribut + " LIKE " + Attributwert + ";");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Kampfhandlung"  + " WHERE " + Attribut + " LIKE '" + Attributwert + "';");
     }
 
     public void ausgabeKampfhandlungZweiParameter(String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Kampfhandlung"  + " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' ;");
     }
 
+
+
+
+
     public void ausgabeEinheitMindestErfahrung(String parameterwert){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit WHERE Erfahrung " + "<" + parameterwert + ";");
     }
 
     public void ausgabeEinheitMindestKampfkraft(String parameterwert){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit WHERE Kampfkraft =" + parameterwert + ";");
     }
 
     public void ausgabeEinheitID(String parameterwert){
-        sqlControll.processSQLMitRueckgabe("");
+        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit WHERE ID =" + parameterwert + ";");
     }
 
     //Methoden um alle Datensätze auszugeben

@@ -35,11 +35,11 @@ public class Fahrzeugsuche {
                 String[] attribute = suchParameterAusgeben(tmp);
 
                 if(tmp == 1){
-                    vS.ausgabeFahrzeugEinParameter(attribute[0], attribute[1]);
+                    vS.ausgabeFahrzeugeEinParameter( attribute[0], attribute[1]);
                 }else if(tmp == 2){
-                    vS.ausgabeFahrzeugZweiParameter(attribute[0], attribute[1], attribute[2], attribute[3]);
+                    vS.ausgabeFahrzeugeZweiParameter( attribute[0], attribute[1], attribute[2], attribute[3]);
                 }else if(tmp == 3){
-                    vS.ausgabeFahrzeugDreiParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                    vS.ausgabeFahrzeugeDreiParameter( attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
                 }
                 frame.dispose();
             }

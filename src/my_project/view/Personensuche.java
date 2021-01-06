@@ -36,15 +36,14 @@ public class Personensuche {
                 String[] attribute = suchParameterAusgeben(tmp);
 
                 if(tmp == 1){
-                    vS.ausgabePersonEinParameter(attribute[0], attribute[1]);
+                    vS.ausgabePersonenEinParameter( attribute[1], attribute[2]);
                 }else if(tmp == 2){
-                    vS.ausgabePersonZweiParameter(attribute[0], attribute[1], attribute[2], attribute[3]);
+                    vS.ausgabePersonenZweiParameter(attribute[1], attribute[2], attribute[3], attribute[4]);
                 }else if(tmp == 3){
-                    vS.ausgabePersonDreiParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                    vS.ausgabePersonenDreiParameter(attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6]);
                 }else if(tmp == 4){
-                    vS.ausgabePersonVierParameter(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6], attribute[7]);
+                    vS.ausgabePersonenVierParameter(attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6], attribute[7], attribute[8]);
                 }
-
                 frame.dispose();
             }
         });
@@ -71,7 +70,7 @@ public class Personensuche {
     private String[] suchParameterAusgeben(int anzahlParameter){
         String zwischenResultat = "";
         if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("EinheitsID")){
-            zwischenResultat = zwischenResultat + Attribut01.getText() + "§" + attributwert01.getText();
+            zwischenResultat = zwischenResultat + "§" +Attribut01.getText() + "§" + attributwert01.getText();
         }
         if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Alter in ganzen Zahlen")){
             zwischenResultat = zwischenResultat + "§" + Attribut02.getText() + "§" + attributwert02.getText();
