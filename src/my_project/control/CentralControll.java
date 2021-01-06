@@ -197,6 +197,11 @@ public class CentralControll {
 
     //Methoden um bestimmten Datensatz zu löschen
 
+    //TODO Löschen erarbeiten sowie Bugfix im gesamten Programm betreiben,
+    // außerdem letzte Viewverschönerungen
+    // ER- und UML-diagramm
+    // Präsentation und Codespotlights
+
     public void deleteFahrzeug(String IDZuloeschen){
         sqlControll.processSQLMitRueckgabe("");
     }
