@@ -28,7 +28,7 @@ public class ErstelleNeuesFahrzeug {
         finishAndCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vS.erstelleNeuesFahrzeug(textField4.getText(), textField1.getText(), textField5.getText(), textField2.getText(), textField4.getText(), textField3.getText());
+                vS.erstelleNeuesFahrzeug(textField4.getText(), textField1.getText(), textField5.getText(), textField2.getText(), textField6.getText(), textField3.getText());
                 frame.dispose();
             }
         });

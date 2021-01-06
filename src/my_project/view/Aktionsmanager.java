@@ -13,12 +13,15 @@ public class Aktionsmanager {
     private JButton deleteThisButton;
     private JTextField zuLöschendenDatensatzHierTextField;
     private JPanel mainPanel;
+    private JButton verändereEinenDatensatzButton;
     private JFrame frame;
     private CentralControll vS;
     private int aktuelleTabelle;
+    private Bearbeiten b;
 
     public Aktionsmanager(CentralControll vS) {
         this.vS = vS;
+        b = new Bearbeiten(vS);
         frame = new JFrame("Wähle deine Aktion aus");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -67,7 +70,7 @@ public class Aktionsmanager {
                 }else if(aktuelleTabelle == 3){
                     vS.showAll("Einheit");
                 }else if(aktuelleTabelle == 4){
-                    vS.showAll("Kampfhandlungen");
+                    vS.showAll("Kampfhandlung");
                 }
                 frame.dispose();
             }
@@ -84,6 +87,26 @@ public class Aktionsmanager {
                     vS.deleteEinheit(zuLöschendenDatensatzHierTextField.getText());
                 }else if(aktuelleTabelle == 4){
                     vS.deleteKampfhandlung(zuLöschendenDatensatzHierTextField.getText());
+                }
+                frame.dispose();
+            }
+        });
+
+        verändereEinenDatensatzButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(aktuelleTabelle == 1){
+                    b.setAktuelleTabelle(1);
+                    b.setVisible(true);
+                }else if(aktuelleTabelle == 2){
+                    b.setAktuelleTabelle(2);
+                    b.setVisible(true);
+                }else if(aktuelleTabelle == 3){
+                    b.setAktuelleTabelle(3);
+                    b.setVisible(true);
+                }else if(aktuelleTabelle == 4){
+                    b.setAktuelleTabelle(4);
+                    b.setVisible(true);
                 }
                 frame.dispose();
             }

@@ -29,7 +29,7 @@ public class StandortErstellen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                vC.newStandort(nameTextField.getText(), Integer.parseInt(xKoordinate0900TextField.getText()), Integer.parseInt(yKoordinate0600TextField.getText()),Integer.parseInt(IDTextField.getText()), Integer.parseInt(inGanzenZahlenTextField.getText()) );
+                vC.newStandort(nameTextField.getText(), Integer.parseInt(xKoordinate0900TextField.getText()), Integer.parseInt(yKoordinate0600TextField.getText()), IDTextField.getText(), Integer.parseInt(inGanzenZahlenTextField.getText()) );
             }
         });
     }

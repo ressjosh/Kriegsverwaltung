@@ -33,9 +33,9 @@ public class Kampfhandlungssuche {
                 String[] attribute = suchParameterAusgeben(tmp);
 
                 if(tmp == 1){
-                    vS.ausgabeKampfhandlungEinParameter( attribute[0], attribute[1]);
+                    vS.ausgabeKampfhandlungEinParameter( attribute[1], attribute[2]);
                 }else if(tmp == 2) {
-                    vS.ausgabeKampfhandlungZweiParameter( attribute[0], attribute[1], attribute[2], attribute[3]);
+                    vS.ausgabeKampfhandlungZweiParameter( attribute[1], attribute[2], attribute[3], attribute[4]);
                 }
 
                 frame.dispose();
@@ -59,10 +59,10 @@ public class Kampfhandlungssuche {
     private String[] suchParameterAusgeben(int anzahlParameter){
         String zwischenResultat = "";
         if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("Standort ID")){
-            zwischenResultat = zwischenResultat + Attribut01.getText() + "§" + attributwert01.getText();
+            zwischenResultat = zwischenResultat + "§" + "JR_Kv_Kampfhandlung." + Attribut01.getText() + "§" + attributwert01.getText();
         }
         if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Feind ID")){
-            zwischenResultat = zwischenResultat + "§" + Attribut02.getText() + "§" + attributwert02.getText();
+            zwischenResultat = zwischenResultat + "§" + "JR_Kv_Kampfhandlung." + Attribut02.getText() + "§" + attributwert02.getText();
         }
 
         String[] result = zwischenResultat.split("§");

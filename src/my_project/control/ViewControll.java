@@ -33,8 +33,8 @@ public class ViewControll {
         verwaltungsoptionen.registriereButtons(vC);
     }
 
-    public void newStandort(String name, int y, int x, int iD, int kampfkraft){
-        vS.erstelleNeuenStandort(name, "" + x, "" + y, ""+kampfkraft);
+    public void newStandort(String name, int y, int x, String iD, int kampfkraft){
+        vS.erstelleNeuenStandort(iD, "" + x, "" + y, ""+kampfkraft, name);
         Standortmarke tmp = new Standortmarke(y, x, this);
         vS.getEkM().standortHinzufuegen(tmp);
         vC.draw(tmp, 1);

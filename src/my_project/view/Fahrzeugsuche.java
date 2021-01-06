@@ -35,11 +35,11 @@ public class Fahrzeugsuche {
                 String[] attribute = suchParameterAusgeben(tmp);
 
                 if(tmp == 1){
-                    vS.ausgabeFahrzeugeEinParameter( attribute[0], attribute[1]);
+                    vS.ausgabeFahrzeugeEinParameter( attribute[1], attribute[2]);
                 }else if(tmp == 2){
-                    vS.ausgabeFahrzeugeZweiParameter( attribute[0], attribute[1], attribute[2], attribute[3]);
+                    vS.ausgabeFahrzeugeZweiParameter( attribute[1], attribute[2], attribute[3], attribute[4]);
                 }else if(tmp == 3){
-                    vS.ausgabeFahrzeugeDreiParameter( attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                    vS.ausgabeFahrzeugeDreiParameter( attribute[1], attribute[2], attribute[3], attribute[4], attribute[5], attribute[6]);
                 }
                 frame.dispose();
             }
@@ -67,13 +67,13 @@ public class Fahrzeugsuche {
     private String[] suchParameterAusgeben(int anzahlParameter){
         String zwischenResultat = "";
         if(!attributwert01.getText().equals("") && !attributwert01.getText().equals("Typ ID des Fahrzeuges")){
-            zwischenResultat = zwischenResultat + Attribut01.getText() + "§" + attributwert01.getText();
+            zwischenResultat = zwischenResultat +"§" +  "JR_Kv_Fahrzeuge." + Attribut01.getText() + "§" + attributwert01.getText();
         }
         if(!attributwert02.getText().equals("") && !attributwert02.getText().equals("Stationsort (ID)")){
-            zwischenResultat = zwischenResultat + "§" + Attribut02.getText() + "§" + attributwert02.getText();
+            zwischenResultat = zwischenResultat + "§" +  "JR_Kv_Fahrzeuge." +Attribut02.getText() + "§" + attributwert02.getText();
         }
         if(!attributwert03.getText().equals("") && !attributwert03.getText().equals("Baujahr")){
-            zwischenResultat = zwischenResultat + "§" + Attribut03.getText() + "§" + attributwert03.getText();
+            zwischenResultat = zwischenResultat + "§" +  "JR_Kv_Fahrzeuge." +Attribut03.getText() + "§" + attributwert03.getText();
         }
 
         String[] result = zwischenResultat.split("§");

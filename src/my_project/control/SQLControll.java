@@ -116,29 +116,31 @@ public class SQLControll {
                 "Koordinate01 INTEGER," +
                 "Koordinate02 INTEGER," +
                 "Gesamtkampfkraft INTEGER," +
+                "Name VARCHAR(40), " +
                 "PRIMARY KEY(ID))" +
                 ";"));
 
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Fahrzeuge(" +
                 "ID INTEGER NOT NULL," +
-                "Typ VARCHAR(20)," +
+                "Typ INTEGER," +
                 "Baujahr INTEGER," +
                 "Fahrzeugführer INTEGER," +
                 "Stationsort INTEGER," +
                 "zerstört BOOLEAN," +
-                "Besatzung VARCHAR(10)," +
+                "Besatzung INTEGER," +
                 "PRIMARY KEY(ID))" +
                 ";"));
 
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Fahrzeugtypen(" +
+                "ID INTEGER NOT NULL, "+
                 "Typ VARCHAR(10) NOT NULL," +
                 "Fahrzeugart VARCHAR(20)," +
                 "PS INTEGER," +
                 "Besatzungszahl Integer," +
                 "Kampfkraft INTEGER," +
-                "PRIMARY KEY(Typ))" +
+                "PRIMARY KEY(ID))" +
                 ";"));
 
 
@@ -171,9 +173,10 @@ public class SQLControll {
                 ";"));
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Besatzung(" +
+                "ID INTEGER NOT NULL, " +
                 "Spitzname VARCHAR(20) NOT NULL," +
                 "Erfahrung INTEGER," +
-                "PRIMARY KEY(Spitzname))" +
+                "PRIMARY KEY(ID))" +
                 ";"));
 
         System.out.println(processSQL("CREATE TABLE JR_Kv_Feinde(" +
@@ -228,11 +231,12 @@ public class SQLControll {
                 ";"));
 
         System.out.println(processSQL("ALTER TABLE JR_Kv_Fahrzeuge " +
-                "ADD CONSTRAINT FOREIGN KEY (Typ) REFERENCES JR_Kv_Fahrzeugtypen (Typ), " +
+                "ADD CONSTRAINT FOREIGN KEY (Typ) REFERENCES JR_Kv_Fahrzeugtypen (ID), " +
                 "ADD CONSTRAINT FOREIGN KEY (Fahrzeugführer) REFERENCES JR_Kv_Personen (Erkennungsnummer), " +
                 "ADD CONSTRAINT FOREIGN KEY (Stationsort) REFERENCES JR_Kv_Standorte (ID), " +
-                "ADD CONSTRAINT FOREIGN KEY (Besatzung) REFERENCES JR_Kv_Besatzung (Spitzname) " +
+                "ADD CONSTRAINT FOREIGN KEY (Besatzung) REFERENCES JR_Kv_Besatzung (ID) " +
                 ";"));
+
         erstelleAnfangsdatensaetze();
     }
 
@@ -240,43 +244,43 @@ public class SQLControll {
         System.out.println("-------------------------Ab hier werden die Anfangsdatensätze erzeugt------------------------");
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('P330', 'Panzer', 7300, 6, 560) " +
+                "(1,'P330', 'Panzer', 7300, 6, 560) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('P530', 'Panzer', 12259, 7, 1010) " +
+                "(2,'P530', 'Panzer', 12259, 7, 1010) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('T10', 'Truppentransporter', 830, 47, 450) " +
+                "(3,'T10', 'Truppentransporter', 830, 47, 450) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('H87', 'Helikopter', 2200, 6, 1547) " +
+                "(4,'H87', 'Helikopter', 2200, 6, 1547) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('FS2020', 'Fregatte', 24000, 470, 8600) " +
+                "(5,'FS2020', 'Fregatte', 24000, 470, 8600) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Fahrzeugtypen " +
                 "VALUES " +
-                "('Corsa', 'Opel', 73, 7, 2) " +
+                "(6,'Corsa', 'Opel', 73, 7, 2) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
                 "VALUES " +
-                "('Mausi', 6) " +
+                "(1,'Mausi', 6) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
                 "VALUES " +
-                "('Todesengel', 10) " +
+                "(2,'Todesengel', 10) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
                 "VALUES " +
-                "('Frisch Fleisch', 1) " +
+                "(3,'Frisch Fleisch', 1) " +
                 ";"));
         System.out.println(processSQL("INSERT INTO JR_Kv_Besatzung " +
                 "VALUES " +
-                "('Wiesel', 8) " +
+                "(4,'Wiesel', 8) " +
                 ";"));
 
         System.out.println(processSQL("INSERT INTO JR_Kv_Feinde " +
