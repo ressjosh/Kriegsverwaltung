@@ -151,7 +151,7 @@ public class SQLControll {
                 "Age INTEGER," +
                 "Geschlecht VARCHAR(10)," +
                 "Geburtstag VARCHAR(10)," +
-                "Einheit INTEGER," +
+                "Einheit INTEGER NOT NULL," +
                 "ImDienst BOOLEAN," +
                 "Tot BOOLEAN," +
                 "Straße VARCHAR(40)," +

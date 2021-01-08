@@ -20,7 +20,7 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
         einheiten = new Button("Einheiten- ", 932, 104,50,270,25,960,128,255,0,0,2,this);
         kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,270,25,960,180,255,0,0,3,this);
         gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,270,25,960,232,255,0,0,4,this);
-        personen = new Button("Reconnecting ", 932, 260,50,270,25,960,286,255,0,0,5,this);
+        reconnecting = new Button("Reconnecting ", 932, 260,50,270,25,960,286,255,0,0,5,this);
 
         gV = new Gesamtverwaltung(vS);
     }
@@ -64,10 +64,13 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
         vC.draw(einheiten,1);
         vC.draw(kampfhandlungen,1);
         vC.draw(gesamtUebersicht, 1);
+        vC.draw(reconnecting, 1);
+        vC.register(reconnecting,1);
         vC.register(personen,1);
         vC.register(fahrzeuge,1);
         vC.register(einheiten,1);
         vC.register(kampfhandlungen,1);
         vC.register(gesamtUebersicht, 1);
+
     }
 }

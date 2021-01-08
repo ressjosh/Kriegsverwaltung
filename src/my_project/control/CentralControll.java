@@ -34,13 +34,18 @@ public class CentralControll {
     }
 
     public void erstelleNeuePerson(String erkennungsnummer, String vorname, String nachname, String age, String geschlecht, String geburtsjahr, String einheit, String straße, String hausnummer, String plz, String stadt, String land){
-        sqlControll.processSQL("INSERT INTO JR_Kv_Personen " +
+        System.out.println(sqlControll.processSQL("INSERT INTO JR_Kv_Personen " +
                 "                VALUES " +
                 "                ('"+erkennungsnummer+"', '"+vorname+"', '"+nachname+"', "+age+", '"+geschlecht+"', '"+geburtsjahr+"', "+einheit+"," +
                 "                 true, false, '"+straße+"', "+hausnummer+", "+plz+", '"+stadt+"'," +
                 "                 '"+land+"') " +
-                "                ;");
-        sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit JOIN JR_Kv_Personen ON JR_Kv_Personen.einheit = JR_Kv_Einheit.ID WHERE Erkennungsnummer =  " + erkennungsnummer + "; ");
+                "                ;"));
+
+        sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
+                " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
+                " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
+                " WHERE Erkennungsnummer =  " + erkennungsnummer + "; ");
+
 
     }
 
@@ -90,35 +95,35 @@ public class CentralControll {
 
 
     public void ausgabePersonenEinParameter( String Attribut, String Attributwert){
-        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+        sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
                 " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
                 " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
                 " WHERE " + Attribut + " LIKE '" + Attributwert + "';");
     }
 
     public void ausgabePersonenZweiParameter(String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
-        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+        sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
                 " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
                 " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
                 " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' ;");
     }
 
     public void ausgabePersonenDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
-        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+        sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
                 " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
                 " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
                 " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "';");
     }
 
     public void ausgabePersonenVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
-        sqlControll.processSQLMitRueckgabe("SELECT ID, Vorname, Nachname, Age, " +
+        sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
                 " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
                 " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
                 " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "' AND " + Attribut04 + " LIKE '" + Attributwert04+ "' ;");
     }
 
     public void ausgabeFahrzeugeEinParameter( String Attribut, String Attributwert){
-       sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_Fahrzeuge.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
+       sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_FahrzeugeTypen.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
                " FROM ((JR_Kv_Fahrzeuge " +
                "JOIN JR_Kv_Fahrzeugtypen ON JR_Kv_Fahrzeuge.Typ = JR_Kv_Fahrzeugtypen.ID) " +
                "JOIN JR_Kv_Personen ON JR_Kv_Fahrzeuge.Fahrzeugführer = JR_Kv_Personen.Erkennungsnummer) " +
@@ -127,7 +132,7 @@ public class CentralControll {
     }
 
     public void ausgabeFahrzeugeZweiParameter( String Attribut01, String Attributwert01, String Attribut02, String Attributwert02){
-        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_Fahrzeuge.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
+        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_FahrzeugeTypen.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
                 " FROM ((JR_Kv_Fahrzeuge " +
                 "JOIN JR_Kv_Fahrzeugtypen ON JR_Kv_Fahrzeuge.Typ = JR_Kv_Fahrzeugtypen.ID) " +
                 "JOIN JR_Kv_Personen ON JR_Kv_Fahrzeuge.Fahrzeugführer = JR_Kv_Personen.Erkennungsnummer) " +
@@ -136,7 +141,7 @@ public class CentralControll {
     }
 
     public void ausgabeFahrzeugeDreiParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03){
-        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_Fahrzeuge.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
+        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_FahrzeugeTypen.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
                 " FROM ((JR_Kv_Fahrzeuge " +
                 "JOIN JR_Kv_Fahrzeugtypen ON JR_Kv_Fahrzeuge.Typ = JR_Kv_Fahrzeugtypen.ID) " +
                 "JOIN JR_Kv_Personen ON JR_Kv_Fahrzeuge.Fahrzeugführer = JR_Kv_Personen.Erkennungsnummer) " +
@@ -145,7 +150,7 @@ public class CentralControll {
     }
 
     public void ausgabeFahrzeugeVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
-        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_Fahrzeuge.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
+        sqlControll.processSQLMitRueckgabe("SELECT JR_Kv_Fahrzeuge.ID AS ID , Baujahr, JR_Kv_FahrzeugeTypen.Typ AS Typ, Fahrzeugart, PS, Kampfkraft, Vorname, Nachname, Stationsort, Koordinate01, Koordinate02" +
                 " FROM ((JR_Kv_Fahrzeuge " +
                 "JOIN JR_Kv_Fahrzeugtypen ON JR_Kv_Fahrzeuge.Typ = JR_Kv_Fahrzeugtypen.ID) " +
                 "JOIN JR_Kv_Personen ON JR_Kv_Fahrzeuge.Fahrzeugführer = JR_Kv_Personen.Erkennungsnummer) " +
