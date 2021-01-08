@@ -339,4 +339,12 @@ public class SQLControll {
 
 
     }
+
+    public boolean reconnecting(){
+        if(dbController.connect()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

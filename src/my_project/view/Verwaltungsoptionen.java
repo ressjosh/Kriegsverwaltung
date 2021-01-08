@@ -7,7 +7,7 @@ import my_project.control.CentralControll;
 
 public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
 
-    private Button personen, fahrzeuge, einheiten, kampfhandlungen, gesamtUebersicht;
+    private Button personen, fahrzeuge, einheiten, kampfhandlungen, gesamtUebersicht, reconnecting;
     private Gesamtverwaltung gV;
     private CentralControll vS;
     private Aktionsmanager aM;
@@ -15,11 +15,13 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
     public Verwaltungsoptionen(CentralControll vS) {
         this.vS = vS;
         aM = new Aktionsmanager(vS);
-        personen = new Button("Personen- ", 932, 0,50,250,25,960,24,255,0,0,0,this);
-        fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,250,25,960,76,255,0,0,1,this);
-        einheiten = new Button("Einheiten- ", 932, 104,50,250,25,960,128,255,0,0,2,this);
-        kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,250,25,960,180,255,0,0,3,this);
-        gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,250,25,960,232,255,0,0,4,this);
+        personen = new Button("Personen- ", 932, 0,50,270,25,960,24,255,0,0,0,this);
+        fahrzeuge = new Button("Fahrzeug- ", 932, 52,50,270,25,960,76,255,0,0,1,this);
+        einheiten = new Button("Einheiten- ", 932, 104,50,270,25,960,128,255,0,0,2,this);
+        kampfhandlungen = new Button("Kampfverwaltung", 932, 156,50,270,25,960,180,255,0,0,3,this);
+        gesamtUebersicht = new Button("Alle Tabellen ", 932, 208,50,270,25,960,232,255,0,0,4,this);
+        personen = new Button("Reconnecting ", 932, 260,50,270,25,960,286,255,0,0,5,this);
+
         gV = new Gesamtverwaltung(vS);
     }
 
@@ -39,6 +41,8 @@ public class Verwaltungsoptionen extends GraphicalObject implements ButtonUser {
             aM.setVisible(true);
         }else if(buttonNummer == 4){
             gV.setVisible(true);
+        }else if(buttonNummer == 5){
+            vS.reconnecting();
         }
 
     }

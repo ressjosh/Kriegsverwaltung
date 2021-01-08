@@ -224,4 +224,12 @@ public class CentralControll {
         sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_" + tabelle + " WHERE " + namePrimaryKey + " =  " + primaryKey + "; ");
     }
 
+    public void reconnecting(){
+        if(sqlControll.reconnecting()){
+            System.out.println("-----------------------------------Successfull reconnnected!-------------------------------");
+        }else{
+            System.out.println("-----------------------------------Connection failed-------------------------------");
+        }
+    }
+
 }
