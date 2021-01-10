@@ -76,22 +76,6 @@ public class Aktionsmanager {
             }
         });
 
-        deleteThisButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(aktuelleTabelle == 1){
-                    vS.deletePerson(zuLöschendenDatensatzHierTextField.getText());
-                }else if(aktuelleTabelle == 2){
-                    vS.deleteFahrzeug(zuLöschendenDatensatzHierTextField.getText());
-                }else if(aktuelleTabelle == 3){
-                    vS.deleteEinheit(zuLöschendenDatensatzHierTextField.getText());
-                }else if(aktuelleTabelle == 4){
-                    vS.deleteKampfhandlung(zuLöschendenDatensatzHierTextField.getText());
-                }
-                frame.dispose();
-            }
-        });
-
         verändereEinenDatensatzButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

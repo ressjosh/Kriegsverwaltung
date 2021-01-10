@@ -69,7 +69,6 @@ public class SQLControll {
             QueryResult queryResult = dbController.getCurrentQueryResult();
             if(queryResult !=null) {
                 return "Success";
-                //return formatSQLOutput(queryResult.getColumnNames(), queryResult.getData());
             }else{
                 String error = dbController.getErrorMessage();
                 if(error !=null) {
