@@ -23,7 +23,8 @@ public class Button extends InteractiveGraphicalObject {
     private int schriftY;
 
 
-    public Button(String text,double x, double y, int hoehe, int breite, int schriftgroesse, int schriftX, int schriftY,  int r, int g, int b, int buttonNr, ButtonUser user){
+    public Button(String text,double x, double y, int hoehe, int breite, int schriftgroesse,
+                  int schriftX, int schriftY,  int r, int g, int b, int buttonNr, ButtonUser user){
         myUser = user;
         buttonNummer = buttonNr;
         this.x = x;

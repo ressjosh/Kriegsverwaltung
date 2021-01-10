@@ -11,7 +11,6 @@ import java.awt.image.BufferedImage;
 
 public class Startfenster extends GraphicalObject implements ButtonUser{
 
-    private BufferedImage startbild;
     private Button startButton;
     private Button selectMusic;
     private ViewController viewController;

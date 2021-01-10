@@ -115,11 +115,13 @@ public class CentralControll {
                 " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "';");
     }
 
-    public void ausgabePersonenVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
+    public void ausgabePersonenVierParameter(String Attribut01, String Attributwert01,String Attribut02, String Attributwert02,
+                                             String Attribut03, String Attributwert03,String Attribut04, String Attributwert04){
         sqlControll.processSQLMitRueckgabe("SELECT Erkennungsnummer, Vorname, Nachname, Age, " +
                 " Geschlecht, Land, Stadt, Einheit, Oberbefehlshaber AS Vorgesetzter  " +
                 " FROM JR_Kv_Personen JOIN JR_Kv_Einheit ON JR_Kv_Personen.Einheit = JR_Kv_Einheit.ID" +
-                " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' AND "+ Attribut03 + " LIKE '" + Attributwert03+ "' AND " + Attribut04 + " LIKE '" + Attributwert04+ "' ;");
+                " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' " +
+                "AND "+ Attribut03 + " LIKE '" + Attributwert03+ "' AND " + Attribut04 + " LIKE '" + Attributwert04+ "' ;");
     }
 
     public void ausgabeFahrzeugeEinParameter( String Attribut, String Attributwert){
@@ -176,10 +178,6 @@ public class CentralControll {
                 "JOIN JR_Kv_Einheit ON JR_Kv_KämpfendeTruppe.Einheit = JR_Kv_Einheit.ID" +
                 " WHERE " + Attribut01 + " LIKE '" + Attributwert01 + "' AND " + Attribut02 + " LIKE '" + Attributwert02+ "' ;");
     }
-
-
-
-
 
     public void ausgabeEinheitMindestErfahrung(String parameterwert){
         sqlControll.processSQLMitRueckgabe("SELECT * FROM JR_Kv_Einheit WHERE Erfahrung " + "<" + parameterwert + ";");
